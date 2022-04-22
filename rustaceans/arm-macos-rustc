@@ -2,7 +2,6 @@
 
 PATH="$MACOS_CROSS_COMPILER/bin:$PATH" \
     C_INCLUDE_PATH="$MACOS_CROSS_COMPILER/SDK/MacOSX${MACOS_SDK_VERSION}.sdk/usr/include" \
-    CC="$(find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'oa64-clang')" \
-    CXX="$(find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'oa64-clang++')" \
+    CC="$MACOS_CROSS_COMPILER/bin/oa64-clang" \
+    CXX="$MACOS_CROSS_COMPILER/bin/oa64-clang++" \
     rustc "$@" --target aarch64-apple-darwin
-
