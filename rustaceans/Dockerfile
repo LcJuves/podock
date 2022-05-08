@@ -11,7 +11,7 @@ ADD arm-macos-cargo /usr/bin/
 ENV MACOS_CROSS_COMPILER /root/macos-cross-compiler
 
 RUN echo "[target.x86_64-apple-darwin]" >>/root/.cargo/config
-RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config 
+RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config
 RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-ar' -printf 'ar = "%p"\n' >>/root/.cargo/config
 RUN echo >>/root/.cargo/config
 RUN echo "[target.aarch64-apple-darwin]" >>/root/.cargo/config
@@ -21,13 +21,7 @@ RUN echo >>/root/.cargo/config
 RUN echo "$MACOS_CROSS_COMPILER/lib" | tee /etc/ld.so.conf.d/darwin.conf
 RUN ldconfig
 
-
 WORKDIR /root
 
-# RUN apt-get install -y git sudo
-# RUN rustup component add rust-src rustfmt
-
 # RUN git clone https://jihulab.com/LiangchengJ/llvm-ir-demo.git
-
 # https://blog.csdn.net/qq_36393978/article/details/118678521
-
