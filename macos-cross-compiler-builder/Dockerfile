@@ -18,7 +18,3 @@ RUN ln -s /usr/lib/llvm-13/bin/llvm-config /usr/bin/llvm-config
 RUN ln -s "$(find / -name libbz2.so)" /usr/lib/
 ENV LLVM_SYS_130_PREFIX /usr/lib/llvm-13
 WORKDIR /root
-
-# RUN git clone https://github.com/LiangchengJ/osxcross.git
-# COPY MacOSX10.10.sdk.tar.xz ./MacOSX10.10.sdk.tar.xz
-
