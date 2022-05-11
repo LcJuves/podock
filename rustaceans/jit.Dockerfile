@@ -22,6 +22,3 @@ RUN echo "$MACOS_CROSS_COMPILER/lib" | tee /etc/ld.so.conf.d/darwin.conf
 RUN ldconfig
 
 WORKDIR /root
-
-# RUN git clone https://jihulab.com/LiangchengJ/llvm-ir-demo.git
-# https://blog.csdn.net/qq_36393978/article/details/118678521
