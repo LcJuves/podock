@@ -2,6 +2,7 @@
 
 (
     cd macos-cross-compiler-builder || exit
+    cp ../amuse-lang-environment/llvm-toolchain-stretch-13.sources.list .
     docker build -t "$CI_REGISTRY_USER/macos-cross-compiler-builder" .
     docker push "$CI_REGISTRY_USER/macos-cross-compiler-builder"
 )
