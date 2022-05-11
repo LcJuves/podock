@@ -1,2 +1,1 @@
-deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch-13 main
-deb-src http://apt.llvm.org/stretch/ llvm-toolchain-stretch-13 main
+../amuse-lang-environment/llvm-toolchain-stretch-13.sources.list
