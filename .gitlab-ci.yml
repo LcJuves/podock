@@ -8,13 +8,10 @@
 #
 # This template uses one generic job with conditional builds
 # for the default branch and all other (MR) branches.
-stages:
-  - build
 
 docker-build:
   # Use the official docker image.
   image: docker:latest
-  stage: build
   services:
     - docker:dind
   before_script:
