@@ -8,6 +8,8 @@
 #
 # This template uses one generic job with conditional builds
 # for the default branch and all other (MR) branches.
+stages:
+  - build
 
 docker-build:
   # Use the official docker image.
@@ -22,4 +24,3 @@ docker-build:
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
     - bash -ex build.sh
-  when: always
