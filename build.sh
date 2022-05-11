@@ -17,3 +17,12 @@
     docker build -t "$CI_REGISTRY_USER/amuse-lang-environment" .
     docker push "$CI_REGISTRY_USER/amuse-lang-environment"
 )
+
+(
+    cd develop-environment || exit
+    curl -L -O --http1.1 https://gitlab.com/LiangchengJ/fserv/-/raw/main/txz/jdk-8u311-linux-x64.tar.xz
+    docker build -t "$CI_REGISTRY_USER/develop-environment:jit" -f jit.Dockerfile .
+    docker push "$CI_REGISTRY_USER/develop-environment:jit"
+    docker build -t "$CI_REGISTRY_USER/develop-environment" .
+    docker push "$CI_REGISTRY_USER/develop-environment"
+)
