@@ -8,8 +8,8 @@ RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >>/etc/apt/sources.list
 RUN apt-get update -y
 
-ADD cmake-3.14.5-Linux-x86_64.tar.gz /opt/
-ENV PATH "/opt/cmake-3.14.5-Linux-x86_64/bin:$PATH"
+ADD cmake-3.23.1-linux-x86_64.tar.gz /opt/
+ENV PATH "/opt/cmake-3.23.1-linux-x86_64/bin:$PATH"
 RUN apt-get install zlib1g-dev libmpc-dev libmpfr-dev libgmp-dev clang-13 clang++-13 make libxml2-dev libssl-dev liblzma-dev libbz2-dev -y
 RUN apt-get install uuid-dev libssl1.0-dev libacl1-dev -y
 RUN ln -s /usr/bin/clang-13 /usr/bin/clang

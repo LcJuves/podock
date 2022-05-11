@@ -3,6 +3,7 @@
 (
     cd macos-cross-compiler-builder || exit
     cp ../amuse-lang-environment/llvm-toolchain-stretch-13.sources.list .
+    curl -L -O https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1-linux-x86_64.tar.gz
     docker build -t "$CI_REGISTRY_USER/macos-cross-compiler-builder" .
     docker push "$CI_REGISTRY_USER/macos-cross-compiler-builder"
 )
