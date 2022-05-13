@@ -22,6 +22,7 @@
 
 (
     cd develop-environment || exit
+    curl -L -O https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz
     curl -L -O --http1.1 https://gitlab.com/LiangchengJ/fserv/-/raw/main/txz/jdk-8u311-linux-x64.tar.xz
     docker build -t "$CI_REGISTRY_USER/develop-environment:jit" -f jit.Dockerfile .
     docker push "$CI_REGISTRY_USER/develop-environment:jit"

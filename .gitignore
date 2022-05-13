@@ -1,3 +1,4 @@
 develop-environment/jdk-8u311-linux-x64.tar.xz
 macos-cross-compiler-builder/cmake-3.23.1-linux-x86_64.tar.gz
 macos-cross-compiler-builder/cmake-3.23.1-linux-x86_64
+develop-environment/zig-linux-x86_64-0.9.1.tar.xz
