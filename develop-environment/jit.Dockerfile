@@ -9,3 +9,7 @@ ENV PATH "$JAVA_HOME/bin:$PATH"
 ADD flutter_linux_3.0.0-stable.tar.xz /usr/local/denv/
 RUN ln -s /usr/local/denv/flutter/bin/cache/dart-sdk /usr/local/denv/dart
 ENV PATH "/usr/local/denv/flutter/bin:$PATH"
+RUN apt-get install -y unzip
+RUN curl -fsSL https://deno.land/install.sh | sh
+ENV DENO_INSTALL "/root/.deno"
+ENV PATH "$DENO_INSTALL/bin:$PATH"
