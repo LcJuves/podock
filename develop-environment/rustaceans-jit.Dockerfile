@@ -7,8 +7,3 @@ ENV JAVA_HOME /usr/local/denv/java/jdk-8u311-linux-x64
 ENV JRE_HOME "$JAVA_HOME/jre"
 ENV CLASSPATH ".:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar"
 ENV PATH "$JAVA_HOME/bin:$PATH"
-
-RUN apt-get install -y unzip
-RUN curl -fsSL https://deno.land/install.sh | sh
-ENV DENO_INSTALL "/root/.deno"
-ENV PATH "$DENO_INSTALL/bin:$PATH"

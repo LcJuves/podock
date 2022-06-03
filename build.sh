@@ -27,6 +27,8 @@
     curl -L -O https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
     curl -L -O https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz
     curl -L -O https://github.com/LiangchengJ/vscode/releases/download/dev_test_part17/codeoss-server-linux-x64-web.tar.gz
+    curl -L -O https://github.com/denoland/deno/releases/download/v1.22.2/deno-x86_64-unknown-linux-gnu.zip
+    unzip deno-x86_64-unknown-linux-gnu.zip
     docker build -t "$CI_REGISTRY_USER/develop-environment:rustaceans-jit" -f rustaceans-jit.Dockerfile .
     docker push "$CI_REGISTRY_USER/develop-environment:rustaceans-jit"
     docker build -t "$CI_REGISTRY_USER/develop-environment:rustaceans" -f rustaceans.Dockerfile .
