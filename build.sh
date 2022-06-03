@@ -33,7 +33,7 @@
 
 (
     cd codeoss-server || exit
-    curl -L -O https://github.com/LiangchengJ/vscode/releases/download/untagged-129753f60e940198d7eb/codeoss-server-linux-x64-web.tar.gz
+    curl -L -O https://github.com/LiangchengJ/vscode/releases/download/dev_test_part17/codeoss-server-linux-x64-web.tar.gz
     docker build -t "$CI_REGISTRY_USER/codeoss-server" .
     docker push "$CI_REGISTRY_USER/codeoss-server"
 )
