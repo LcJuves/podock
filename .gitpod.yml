@@ -8,3 +8,4 @@ tasks:
     command: |
       export DENO_INSTALL="$HOME/.deno"
       export PATH="$DENO_INSTALL/bin:$PATH"
+      export PATH="/workspace/.vscode-remote/extensions/foxundermoon.shell-format-7.0.1/bin:$PATH"
