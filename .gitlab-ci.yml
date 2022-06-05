@@ -23,5 +23,9 @@ docker-build:
       docker run \
           -v "$PWD:/workspace" \
           -v "/var/run/docker.sock:/var/run/docker.sock" \
+          -e CI_REGISTRY=$CI_REGISTRY \
+          -e CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE \
+          -e CI_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD \
+          -e CI_REGISTRY_USER=$CI_REGISTRY_USER \
           liangchengj/container-image-builder:latest bash -exc \
           "cd /workspace && deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans"
