@@ -11,10 +11,14 @@
 
 docker-build:
   # Use the official docker image.
-  image: liangchengj/container-image-builder:latest
+  image: docker:latest
+  services:
+    - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - apk add bash -q
+    - apk add curl -q
   # Default branch leaves tag empty (= latest tag)
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
-    - deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans
+    - bash -ex build.sh
