@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -n "$CI_REGISTRY_USER" ] && [ -n "$CI_REGISTRY_PASSWORD" ] && [ -n "$CI_REGISTRY" ]; then
-    docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-fi
-
 (
     cd macos-cross-compiler-builder || exit
     if [ ! -f "llvm-toolchain-stretch-13.sources.list" ]; then
