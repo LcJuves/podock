@@ -11,7 +11,7 @@
 
 docker-build:
   # Use the official docker image.
-  image: liangchengj/container-image-builder:latest
+  image: docker:latest
   services:
     - docker:dind
   before_script:
@@ -19,4 +19,9 @@ docker-build:
   # Default branch leaves tag empty (= latest tag)
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
-    - deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans
+    - |
+      docker run \
+          -v "$PWD:/workspace" \
+          -v "/var/run/docker.sock:/var/run/docker.sock" \
+          liangchengj/container-image-builder:latest bash -exc \
+          "cd /workspace && docker run -it deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans"
