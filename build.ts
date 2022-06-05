@@ -1,5 +1,3 @@
-// deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans
-
 import * as log from "https://deno.land/std@0.142.0/log/mod.ts";
 import { join } from "https://deno.land/std@0.142.0/path/mod.ts";
 import { parse } from "https://deno.land/std@0.142.0/flags/mod.ts";
@@ -13,27 +11,19 @@ const parsedArgIgnoreDirs = parsedArgs["ignoreDirs"];
 if (parsedArgIgnoreDirs) {
   ignoreDirs = parsedArgIgnoreDirs.split(",");
 }
-// console.dir({ buildType, ignoreDirs });
-
-log.info("Starting pre-build ...");
-const p = Deno.run({
-  cmd: ["bash", "-e", "pre-build.sh"],
-  cwd: currentWorkingDirectory,
-});
-const status = await p.status();
-if (status.code !== 0) {
-  log.info("Pre-build with error!");
-  Deno.exit(status.code);
-} else {
-  log.info("Pre-build succeed!");
-}
+const push = (parsedArgs["push"] ?? "false") === "true";
+// console.dir({ buildType, ignoreDirs, push });
 
 async function buildContainerImage(
   wd: string,
   containerName: string,
   containerTag: string,
 ) {
-  const imageName = `${containerName}:${containerTag}`;
+  let imageName = `${containerName}:${containerTag}`;
+  const envCiRegistryUser = Deno.env.get("CI_REGISTRY_USER") ?? "";
+  if (envCiRegistryUser !== "") {
+    imageName = `${envCiRegistryUser}/${imageName}`;
+  }
   if (buildType === "linux" && containerTag.indexOf("win") !== -1) {
     log.info(`Skip windows' container image ${imageName}`);
     return;
@@ -48,22 +38,45 @@ async function buildContainerImage(
   } catch (_) {
     dockerfileName = "Dockerfile";
   }
-  let _imageName = imageName;
-  const envCiRegistryUser = Deno.env.get("CI_REGISTRY_USER") ?? "";
-  if (envCiRegistryUser !== "") {
-    _imageName = `${envCiRegistryUser}/${_imageName}`;
-  }
-  const p = Deno.run({
-    cmd: ["docker", "build", "-t", _imageName, "-f", dockerfileName, "."],
+
+  const dockerBuildP = Deno.run({
+    cmd: ["docker", "build", "-t", imageName, "-f", dockerfileName, "."],
     cwd: wd,
   });
-  const status = await p.status();
-  if (status.code !== 0) {
+  const dockerBuildStatus = await dockerBuildP.status();
+  if (dockerBuildStatus.code !== 0) {
     log.info(`build image ${imageName} with error!`);
-    Deno.exit(status.code);
+    Deno.exit(dockerBuildStatus.code);
   } else {
     log.info(`build image ${imageName} succeed!`);
   }
+
+  if (push) {
+    const dockerPushP = Deno.run({
+      cmd: ["docker", "push", imageName],
+      cwd: wd,
+    });
+    const dockerPushStatus = await dockerPushP.status();
+    if (dockerPushStatus.code !== 0) {
+      log.info(`push image ${imageName} with error!`);
+      Deno.exit(dockerPushStatus.code);
+    } else {
+      log.info(`push image ${imageName} succeed!`);
+    }
+  }
+}
+
+log.info("Starting pre-build ...");
+const p = Deno.run({
+  cmd: ["bash", "-e", "pre-build.sh"],
+  cwd: currentWorkingDirectory,
+});
+const status = await p.status();
+if (status.code !== 0) {
+  log.info("Pre-build with error!");
+  Deno.exit(status.code);
+} else {
+  log.info("Pre-build succeed!");
 }
 
 rootLoop:
