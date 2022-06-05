@@ -24,4 +24,4 @@ docker-build:
           -v "$PWD:/workspace" \
           -v "/var/run/docker.sock:/var/run/docker.sock" \
           liangchengj/container-image-builder:latest bash -exc \
-          "cd /workspace && deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans"
+          "cd /workspace && docker run -it deno run --allow-read --allow-run --allow-env build.ts --ignoreDirs rustaceans"
