@@ -2,15 +2,13 @@ import * as log from "https://deno.land/std@0.142.0/log/mod.ts";
 import { join } from "https://deno.land/std@0.142.0/path/mod.ts";
 import { parse } from "https://deno.land/std@0.142.0/flags/mod.ts";
 
+import containerImages from "./containerImages.json" assert { type: "json" };
+
 const parsedArgs = parse(Deno.args, { "--": false });
 // console.dir(parsedArgs);
 const currentWorkingDirectory = Deno.cwd();
-const buildType = parsedArgs["buildType"] ?? "linux";
-let ignoreDirs = [];
-const parsedArgIgnoreDirs = parsedArgs["ignoreDirs"];
-if (parsedArgIgnoreDirs) {
-  ignoreDirs = parsedArgIgnoreDirs.split(",");
-}
+const buildType: string = parsedArgs["buildType"] ?? "linux";
+const ignoreDirs = (parsedArgs["ignoreDirs"] ?? "").split(",");
 const push = (parsedArgs["push"] ?? "false") === "true";
 // console.dir({ buildType, ignoreDirs, push });
 
@@ -39,16 +37,23 @@ async function buildContainerImage(
     dockerfileName = "Dockerfile";
   }
 
+  try {
+    await Deno.stat(join(wd, dockerfileName));
+  } catch (_) {
+    log.error(`Unable to find \`${dockerfileName}\` in directory \`${wd}\`!`);
+    Deno.exit(1);
+  }
+
   const dockerBuildP = Deno.run({
     cmd: ["docker", "build", "-t", imageName, "-f", dockerfileName, "."],
     cwd: wd,
   });
   const dockerBuildStatus = await dockerBuildP.status();
   if (dockerBuildStatus.code !== 0) {
-    log.info(`build image ${imageName} with error!`);
+    log.error(`Building image ${imageName} with error!`);
     Deno.exit(dockerBuildStatus.code);
   } else {
-    log.info(`build image ${imageName} succeed!`);
+    log.info(`Build image ${imageName} succeed!`);
   }
 
   if (push) {
@@ -58,10 +63,10 @@ async function buildContainerImage(
     });
     const dockerPushStatus = await dockerPushP.status();
     if (dockerPushStatus.code !== 0) {
-      log.info(`push image ${imageName} with error!`);
+      log.error(`Pushing image ${imageName} with error!`);
       Deno.exit(dockerPushStatus.code);
     } else {
-      log.info(`push image ${imageName} succeed!`);
+      log.info(`Push image ${imageName} succeed!`);
     }
   }
 }
@@ -73,40 +78,22 @@ const p = Deno.run({
 });
 const status = await p.status();
 if (status.code !== 0) {
-  log.info("Pre-build with error!");
+  log.error("Pre-building with error!");
   Deno.exit(status.code);
 } else {
   log.info("Pre-build succeed!");
 }
 
 rootLoop:
-for (const containerDirEntry of Deno.readDirSync(currentWorkingDirectory)) {
-  if (
-    containerDirEntry.isDirectory && !containerDirEntry.name.startsWith(".")
-  ) {
-    const containerName = containerDirEntry.name;
-    for (const ignoreDir of ignoreDirs) {
-      if (ignoreDir === containerName) {
-        continue rootLoop;
-      }
+for (const containerImage of containerImages) {
+  const containerName = containerImage.name;
+  for (const ignoreDir of ignoreDirs) {
+    if (ignoreDir === containerName) {
+      continue rootLoop;
     }
-    const containerWd = join(currentWorkingDirectory, containerName);
-    for (
-      const containerTagDirEntry of Deno.readDirSync(
-        containerWd,
-      )
-    ) {
-      if (
-        containerTagDirEntry.isFile &&
-        containerTagDirEntry.name.endsWith("Dockerfile")
-      ) {
-        let containerTag = containerTagDirEntry.name;
-        containerTag = containerTag.substring(0, containerTag.indexOf("."));
-        if (containerTag === "") {
-          containerTag = "latest";
-        }
-        await buildContainerImage(containerWd, containerName, containerTag);
-      }
-    }
+  }
+  const containerWd = join(currentWorkingDirectory, containerName);
+  for (const containerTag of containerImage.tags) {
+    await buildContainerImage(containerWd, containerName, containerTag);
   }
 }
