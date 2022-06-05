@@ -27,7 +27,7 @@ async function buildContainerImage(
   if (buildType === "linux" && containerTag.indexOf("win") !== -1) {
     log.info(`Skip windows' container image ${imageName}`);
     return;
-  } else if (buildType === "windows" && containerName.indexOf("win") === -1) {
+  } else if (buildType === "windows" && containerTag.indexOf("win") === -1) {
     log.info(`Skip linux's container image ${imageName}`);
     return;
   }
