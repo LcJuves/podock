@@ -20,6 +20,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "py3-builder",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
