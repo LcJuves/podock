@@ -29,3 +29,9 @@ ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # RUN pip install certbot-nginx
 # RUN certbot certonly --standalone -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com"
 # https://certbot.eff.org/instructions?ws=nginx&os=debianbuster
+
+RUN openssl req -x509 -nodes -days 1095 -newkey rsa:4096 \
+  -out /etc/nginx/cert/hosted-v2.liangchengj.com/certificate.crt \
+  -keyout /etc/nginx/cert/hosted-v2.liangchengj.com/private.key \
+  -subj "/C=US/ST=New York/L=New York/O=Global Security/OU=Global Security/CN=hosted-v2.liangchengj.com"
+RUN openssl dhparam -out /etc/nginx/cert/hosted-v2.liangchengj.com/dhparam.pem 4096
