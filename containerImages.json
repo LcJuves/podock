@@ -24,6 +24,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "v2node",
+    "tags": ["self-hosted"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
