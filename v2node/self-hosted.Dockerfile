@@ -27,7 +27,8 @@ ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # RUN ln -s /usr/share/py3/Python39/bin/pip3 /usr/bin/pip
 # RUN ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7 /usr/lib/x86_64-linux-gnu/libffi.so.6
 # RUN pip install certbot-nginx
-# RUN certbot certonly --manual -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com" --preferred-challenges dns
+# certbot certonly --manual -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com" --preferred-challenges dns
+# docker run -itd --privileged -v /var/run/docker.sock:/var/run/docker.sock -p 443:443 liangchengj/v2node:self-hosted /sbin/init
 # https://certbot.eff.org/instructions?ws=nginx&os=debianbuster
 
 RUN mkdir -p /etc/nginx/cert/hosted-v2.liangchengj.com
