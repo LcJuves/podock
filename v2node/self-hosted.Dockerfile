@@ -19,7 +19,7 @@ RUN apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plug
 RUN apt-get install -y nginx
 EXPOSE 443
 
-RUN apt-get install -y certbot
+RUN apt-get install -y certbot vim
 ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # ADD Python39.tar.xz /usr/share/py3/
 # ENV PATH "/usr/share/py3/Python39/bin:$PATH"
@@ -27,7 +27,7 @@ ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # RUN ln -s /usr/share/py3/Python39/bin/pip3 /usr/bin/pip
 # RUN ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7 /usr/lib/x86_64-linux-gnu/libffi.so.6
 # RUN pip install certbot-nginx
-# RUN certbot certonly --standalone -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com"
+# RUN certbot certonly --manual -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com" --preferred-challenges dns
 # https://certbot.eff.org/instructions?ws=nginx&os=debianbuster
 
 RUN mkdir -p /etc/nginx/cert/hosted-v2.liangchengj.com
