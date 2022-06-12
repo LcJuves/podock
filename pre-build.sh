@@ -39,3 +39,10 @@ fi
         curl -L -O https://github.com/LiangchengJ/vscode/releases/download/dev_test_part17/codeoss-server-linux-x64-web.tar.gz
     fi
 )
+
+(
+    cd v2node || exit
+    if [ ! -f "Python39.tar.xz" ]; then
+        curl -L -O https://gitlab.com/LiangchengJ/podock/-/raw/main/py3-builder/Python39.tar.xz
+    fi
+)
