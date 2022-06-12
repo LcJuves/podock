@@ -2,10 +2,10 @@
 # Please adjust to your needs (see https://www.gitpod.io/docs/config-gitpod-file)
 # and commit this file to your remote git repository to share the goodness with others.
 
+image: liangchengj/container-image-builder
+
 tasks:
   - init: |
-      curl -fsSL https://deno.land/install.sh | sh
+      echo >/dev/null
     command: |
-      export DENO_INSTALL="$HOME/.deno"
-      export PATH="$DENO_INSTALL/bin:$PATH"
       export PATH="/workspace/.vscode-remote/extensions/foxundermoon.shell-format-7.0.1/bin:$PATH"
