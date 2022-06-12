@@ -29,6 +29,8 @@ ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # RUN pip install certbot-nginx
 # certbot certonly --manual -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com" --preferred-challenges dns
 # docker run -itd --privileged -v /var/run/docker.sock:/var/run/docker.sock -p 443:443 liangchengj/v2node:self-hosted /sbin/init
+# certbot renew --quiet --renew-hook "systemctl restart nginx.service"
+# docker run -itd -p 4433:443 -e PORT=443 -e WS_URI=/ liangchengj/v2node
 # https://certbot.eff.org/instructions?ws=nginx&os=debianbuster
 
 RUN mkdir -p /etc/nginx/cert/hosted-v2.liangchengj.com
