@@ -30,6 +30,7 @@ ADD hosted-v2.liangchengj.com.conf /etc/nginx/conf.d/
 # RUN certbot certonly --standalone -m "liangchengj@outlook.com" -d "hosted-v2.liangchengj.com"
 # https://certbot.eff.org/instructions?ws=nginx&os=debianbuster
 
+RUN mkdir -p /etc/nginx/cert/hosted-v2.liangchengj.com
 RUN openssl req -x509 -nodes -days 1095 -newkey rsa:4096 \
   -out /etc/nginx/cert/hosted-v2.liangchengj.com/certificate.crt \
   -keyout /etc/nginx/cert/hosted-v2.liangchengj.com/private.key \
