@@ -28,6 +28,10 @@
     "tags": ["self-hosted"]
   },
   {
+    "name": "git-scm-builder",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }

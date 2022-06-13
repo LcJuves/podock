@@ -46,3 +46,10 @@ fi
         curl -L -O https://gitlab.com/LiangchengJ/podock/-/raw/main/py3-builder/Python39.tar.xz
     fi
 )
+
+(
+    cd git-scm-builder || exit
+    if [ ! -f "llvm-toolchain-stretch-13.sources.list" ]; then
+        cp ../amuse-lang-environment/llvm-toolchain-stretch-13.sources.list .
+    fi
+)
