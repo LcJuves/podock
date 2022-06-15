@@ -25,7 +25,7 @@
   },
   {
     "name": "v2node",
-    "tags": ["self-hosted"]
+    "tags": ["self-hosted", "latest"]
   },
   {
     "name": "git-scm-builder",
