@@ -32,6 +32,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "linuxfromscratch-builder",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
