@@ -53,3 +53,11 @@ fi
         cp ../amuse-lang-environment/llvm-toolchain-stretch-13.sources.list .
     fi
 )
+
+(
+    cd host-manager || exit
+    if [ ! -f "cloudflared-linux-amd64" ]; then
+        curl -L -O https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+    fi
+    chmod +x cloudflared-linux-amd64
+)

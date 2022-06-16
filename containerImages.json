@@ -36,6 +36,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "host-manager",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
