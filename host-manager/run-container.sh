@@ -16,4 +16,4 @@ done
 
 echo "bootstrap arguments: ${bootstrap_args[*]}"
 
-docker run "${bootstrap_args[@]}" --privileged -v /var/run/docker.sock:/var/run/docker.sock -h "$_HOSTNAME" liangchengj/host-manager
+docker run "${bootstrap_args[@]}" --privileged --expose 23-9934 -v /var/run/docker.sock:/var/run/docker.sock -h "$_HOSTNAME" liangchengj/host-manager
