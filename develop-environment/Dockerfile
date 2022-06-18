@@ -1,5 +1,5 @@
 FROM liangchengj/develop-environment:gitpod
-RUN bash -c "$(curl -fsSL https://github.com/LiangchengJ/liangchengj/raw/main/clang/linux-like/config_my_git.sh)"
+RUN curl -fsSL https://github.com/LiangchengJ/liangchengj/raw/main/clang/linux-like/config_my_git.sh | sh
 
 ADD codeoss-server-linux-x64-web.tar.gz /usr/local/
 ENV PATH "/usr/local/codeoss-server-linux-x64-web/bin:$PATH"
