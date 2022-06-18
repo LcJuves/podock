@@ -21,3 +21,4 @@ RUN apt-get install -y build-essential \
 # ENV PATH "/usr/share/py3/Python39/bin:$PATH"
 # RUN ln -s /usr/share/py3/Python39/bin/python3 /usr/bin/python
 # RUN ln -s /usr/share/py3/Python39/bin/pip3 /usr/bin/pip
+# RUN ln -s /usr/lib/x86_64-linux-gnu/libffi.so.7 /usr/lib/x86_64-linux-gnu/libffi.so.6
