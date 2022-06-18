@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 if [ -z "$CODEOSS_SERVER_PORT" ]; then
     CODEOSS_SERVER_PORT=8000

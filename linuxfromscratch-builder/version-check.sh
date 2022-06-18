@@ -1,14 +1,13 @@
-#!/bin/bash
-# shellcheck disable=SC2185
+#!/bin/sh
 # Simple script to list version numbers of critical development tools
 export LC_ALL=C
 bash --version | head -n1 | cut -d" " -f2-4
 MYSH=$(readlink -f /bin/sh)
 echo "/bin/sh -> $MYSH"
-echo "$MYSH" | grep -q bash || echo "ERROR: /bin/sh does not point to bash"
+echo "$MYSH" | grep -q bash || (echo "ERROR: /bin/sh does not point to bash" && exit 1)
 unset MYSH
 
-echo -n "Binutils: "
+printf "Binutils: "
 ld --version | head -n1 | cut -d" " -f3-
 bison --version | head -n1
 
@@ -20,10 +19,10 @@ else
   echo "yacc not found"
 fi
 
-echo -n "Coreutils: "
+printf "Coreutils: "
 chown --version | head -n1 | cut -d")" -f2
 diff --version | head -n1
-find --version | head -n1
+find . --version | head -n1
 gawk --version | head -n1
 
 if [ -h /usr/bin/awk ]; then
