@@ -15,4 +15,4 @@ CF_HOSTNAME=$(hostname | base64 -d)
 sed -i "s/azure.widgetcorp.tech/$CF_HOSTNAME/g" ~/.cloudflared/config.yml
 
 cloudflared tunnel route dns --overwrite-dns "$TID" "$CF_HOSTNAME"
-cloudflared tunnel run "$TID" >/var/log/cloudflared.log 2>&1
+cloudflared tunnel run "$TID" >/var/log/cloudflared.log 2>&1 &
