@@ -13,4 +13,6 @@ V2NODE_SELF_HOSTED_CONTAINER_ID=$(docker run -itd --privileged \
     -p 443:443 \
     liangchengj/v2node:self-hosted /sbin/init)
 
-docker exec -it --workdir /root "$V2NODE_SELF_HOSTED_CONTAINER_ID" bash -e init-self-hosted-v2node.sh $mail $domain
+docker exec -it \
+    --workdir /root "$V2NODE_SELF_HOSTED_CONTAINER_ID" \
+    bash -e init-self-hosted-v2node.sh $mail $domain
