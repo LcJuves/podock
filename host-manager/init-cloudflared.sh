@@ -11,7 +11,7 @@ cloudflared tunnel delete ssh >/dev/null 2>&1
 TID=$(cloudflared tunnel create ssh | awk 'END{print $NF}')
 
 sed -i "s/6ff42ae2-765d-4adf-8112-31c55c1551ef/$TID/g" ~/.cloudflared/config.yml
-CF_HOSTNAME=$(hostname | base64 -d)
+CF_HOSTNAME=$(hostname | base64 -d 2>/dev/null)
 sed -i "s/azure.widgetcorp.tech/$CF_HOSTNAME/g" ~/.cloudflared/config.yml
 
 cloudflared tunnel route dns --overwrite-dns "$TID" "$CF_HOSTNAME"
