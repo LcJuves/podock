@@ -5,7 +5,6 @@ RUN apt-get update -y
 RUN apt-get install -y gnupg2 apt-transport-https ca-certificates curl git cpio
 ADD llvm-toolchain-stretch-13.sources.list /etc/apt/sources.list.d/
 RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-RUN echo "deb http://security.debian.org/debian-security stretch/updates main" >>/etc/apt/sources.list
 RUN apt-get update -y
 
 ADD cmake-3.23.1-linux-x86_64.tar.gz /opt/
