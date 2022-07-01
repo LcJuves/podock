@@ -1,7 +1,4 @@
-FROM debian:stretch-slim
-LABEL maintainer 'Liangcheng Juves <liangchengj@outlook.com>'
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -y
+FROM liangchengj/container-base
 RUN apt-get install -y gnupg2 apt-transport-https ca-certificates curl git cpio
 ADD llvm-toolchain-stretch-13.sources.list /etc/apt/sources.list.d/
 RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -

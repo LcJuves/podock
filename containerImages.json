@@ -1,5 +1,9 @@
 [
   {
+    "name": "container-base",
+    "tags": ["latest"]
+  },
+  {
     "name": "macos-cross-compiler-builder",
     "tags": ["latest"]
   },

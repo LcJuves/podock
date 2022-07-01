@@ -1,7 +1,4 @@
-FROM debian:stretch-slim
-LABEL maintainer 'Liangcheng Juves <liangchengj@outlook.com>'
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -y
+FROM liangchengj/container-base
 RUN apt-get install curl gcc-6 -y
 RUN ln -s /usr/bin/gcc-6 /usr/bin/cc
 ENV RUSTUP_HOME /etc/rustup

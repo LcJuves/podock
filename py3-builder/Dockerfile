@@ -1,7 +1,4 @@
-FROM debian:stretch-slim
-LABEL maintainer 'Liangcheng Juves <liangchengj@outlook.com>'
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -y
+FROM liangchengj/container-base
 RUN apt-get install -y curl xz-utils
 # Dependencies for building python from source
 RUN apt-get install -y build-essential \
