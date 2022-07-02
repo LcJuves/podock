@@ -44,6 +44,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "svg-worker",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
