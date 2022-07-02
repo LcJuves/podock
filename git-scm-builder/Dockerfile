@@ -11,6 +11,6 @@ RUN ln -s /usr/bin/clang-13 /usr/bin/cc
 
 RUN apt-get install -y libssl1.0-dev libcurl4-openssl-dev libexpat1-dev zlib1g-dev
 RUN apt-get install -y gettext asciidoc
-RUN curl -fsSL https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz | tar -zxf
+RUN curl -fsSL https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz | tar -zxf -
 RUN cd libiconv-1.17 && ./configure && make && make install
 RUN rm -rf libiconv*
