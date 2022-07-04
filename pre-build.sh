@@ -22,9 +22,7 @@ fi
     if [ ! -f "jdk-8u311-linux-x64.tar.xz" ]; then
         curl -L -O --http1.1 https://gitlab.com/LiangchengJ/fserv/-/raw/main/txz/jdk-8u311-linux-x64.tar.xz
     fi
-    if [ ! -f "flutter_linux_3.0.0-stable.tar.xz" ]; then
-        curl -L -O https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.0-stable.tar.xz
-    fi
+
     if [ ! -f "node-v16.15.1-linux-x64.tar.xz" ]; then
         curl -L -O https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz
     fi
