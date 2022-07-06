@@ -48,6 +48,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "fserv-worker",
+    "tags": ["latest"]
+  },
+  {
     "name": "rustaceans",
     "tags": ["latest"]
   }
