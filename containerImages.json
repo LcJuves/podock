@@ -54,5 +54,9 @@
   {
     "name": "rustaceans",
     "tags": ["latest"]
+  },
+  {
+    "name": "browserless-chrome",
+    "tags": ["latest"]
   }
 ]
