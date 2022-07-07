@@ -1,11 +1,16 @@
 FROM liangchengj/rustaceans:jit
-ADD zig-linux-x86_64-0.9.1.tar.xz /usr/local/denv/zig/
+
+RUN apt-get install -y xz-utils
+
+ARG ZIG_VERSION=0.9.1
+RUN mkdir -p /usr/local/denv/zig
+RUN cd /usr/local/denv/zig && curl -fsSL https://ziglang.org/download/$ZIG_VERSION/zig-linux-x86_64-$ZIG_VERSION.tar.xz | tar -xJf -
 ENV PATH "/usr/local/denv/zig/zig-linux-x86_64-0.9.1:$PATH"
 
-ADD jdk-8u311-linux-x64.tar.xz /usr/local/denv/java/
-ENV JAVA_HOME /usr/local/denv/java/jdk-8u311-linux-x64
-ENV JRE_HOME "$JAVA_HOME/jre"
-ENV CLASSPATH ".:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar"
+ARG JDK_VERSION=17.0.3.1
+RUN mkdir -p /usr/local/denv/java
+RUN cd /usr/local/denv/java && curl -fsSL https://fserv.liangchengj.com/txz/jdk-$JDK_VERSION-linux-x64.tar.xz | tar -xJf -
+ENV JAVA_HOME /usr/local/denv/java/jdk-$JDK_VERSION-linux-x64
 ENV PATH "$JAVA_HOME/bin:$PATH"
 
 RUN apt-get install -y unzip

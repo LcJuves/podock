@@ -12,23 +12,6 @@ fi
 )
 
 (
-    cd develop-environment || exit
-    if [ ! -f "zig-linux-x86_64-0.9.1.tar.xz" ]; then
-        curl -L -O https://ziglang.org/download/0.9.1/zig-linux-x86_64-0.9.1.tar.xz
-    fi
-    if [ ! -f "jdk-8u311-linux-x64.tar.xz" ]; then
-        curl -L -O --http1.1 https://gitlab.com/LiangchengJ/fserv/-/raw/main/txz/jdk-8u311-linux-x64.tar.xz
-    fi
-
-    if [ ! -f "node-v16.15.1-linux-x64.tar.xz" ]; then
-        curl -L -O https://nodejs.org/dist/v16.15.1/node-v16.15.1-linux-x64.tar.xz
-    fi
-    if [ ! -f "codeoss-server-linux-x64-web.tar.gz" ]; then
-        curl -L -O https://github.com/LiangchengJ/vscode/releases/download/dev_test_part17/codeoss-server-linux-x64-web.tar.gz
-    fi
-)
-
-(
     cd codeoss-server || exit
     if [ ! -f "codeoss-server-linux-x64-web.tar.gz" ]; then
         curl -L -O https://github.com/LiangchengJ/vscode/releases/download/dev_test_part17/codeoss-server-linux-x64-web.tar.gz
