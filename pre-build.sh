@@ -51,3 +51,10 @@ fi
     chmod +x init-cloudflared.sh
     chmod +x run-container.sh
 )
+
+(
+    cd rustaceans || exit
+    if [ ! -f "macos-cross-compiler.tar.xz" ]; then
+        curl -L -O -s https://github.com/LiangchengJ/macos-cross-compiler/releases/download/mac-os-cross-compiler/macos-cross-compiler.tar.xz
+    fi
+)
