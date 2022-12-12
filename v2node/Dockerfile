@@ -1,6 +1,7 @@
 FROM v2demo/v2demo:latest
 RUN sed -i 's/latest\///' /opt/startup.sh
 RUN sed -i 's/\/v2ray-l/\/v4.45.2\/v2ray-l/' /opt/startup.sh
+RUN sed -i 's/alterId": 0/alterId": 1/' /opt/startup.sh
 
 ENV PORT=443
 ENV WS_URI=/
