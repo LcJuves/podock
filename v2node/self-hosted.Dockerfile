@@ -14,8 +14,4 @@ WORKDIR /root
 ADD certbot_renew.sh .
 ADD localhost.conf /etc/nginx/conf.d/
 
-ENV PORT=443
-ENV WS_URI=/
-ENV v2ray.vmess.aead.forced=false
-
 ADD init-self-hosted-v2node.sh .
