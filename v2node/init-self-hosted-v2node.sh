@@ -23,7 +23,4 @@ openssl dhparam -out /etc/nginx/cert/"$domain"/dhparam.pem 4096
 mv /etc/nginx/conf.d/localhost.conf /etc/nginx/conf.d/"$domain".conf
 sed -i "s/localhost/$domain/g" /etc/nginx/conf.d/"$domain".conf
 
-systemctl start firewalld.service
-firewall-cmd --zone=docker --permanent --add-port=443/tcp
-firewall-cmd --reload
 systemctl start nginx.service

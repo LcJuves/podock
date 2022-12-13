@@ -6,7 +6,7 @@ RUN apt-get update -y
 RUN apt-get install -y curl
 RUN curl -fsSL https://gitlab.com/LiangchengJ/podock/-/raw/main/container-image-builder/install-docker-for-debian.sh | sh
 
-RUN apt-get install -y nginx net-tools firewalld
+RUN apt-get install -y nginx net-tools
 EXPOSE 443
 
 RUN apt-get install -y certbot vim
