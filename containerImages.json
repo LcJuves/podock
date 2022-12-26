@@ -13,7 +13,7 @@
   },
   {
     "name": "rustaceans",
-    "tags": ["latest"]
+    "tags": ["jit", "latest"]
   },
   {
     "name": "develop-environment",
