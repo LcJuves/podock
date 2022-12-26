@@ -12,6 +12,10 @@
     "tags": ["rust-compiler", "llvmenv-jit", "llvmenv", "latest"]
   },
   {
+    "name": "rustaceans",
+    "tags": ["latest"]
+  },
+  {
     "name": "develop-environment",
     "tags": ["rustaceans-jit", "rustaceans", "jit", "gitpod", "latest"]
   },
@@ -49,10 +53,6 @@
   },
   {
     "name": "fserv-worker",
-    "tags": ["latest"]
-  },
-  {
-    "name": "rustaceans",
     "tags": ["latest"]
   },
   {
