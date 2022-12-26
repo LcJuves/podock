@@ -1,4 +1,4 @@
-FROM liangchengj/container-base
+FROM lcjuves/container-base
 RUN apt-get install -y curl xz-utils
 # Dependencies for building python from source
 RUN apt-get install -y build-essential \

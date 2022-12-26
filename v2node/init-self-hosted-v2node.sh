@@ -11,7 +11,7 @@ domain="$2"
 
 V2NODE_CONTAINER_ID=$(docker run -itd \
     -p 4433:443 -h "v2node" \
-    liangchengj/v2node)
+    lcjuves/v2node)
 echo "v2node's container id: $V2NODE_CONTAINER_ID"
 
 mkdir -p /etc/nginx/cert/"$domain"

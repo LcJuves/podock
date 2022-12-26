@@ -1,4 +1,4 @@
-FROM liangchengj/develop-environment:rustaceans-jit
+FROM lcjuves/develop-environment:rustaceans-jit
 
 ARG NODEJS_VERSION=v16.15.1
 RUN mkdir -p /usr/local/denv/nodejs

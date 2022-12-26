@@ -1,4 +1,4 @@
-FROM liangchengj/amuse-lang-environment:llvmenv-jit
+FROM lcjuves/amuse-lang-environment:llvmenv-jit
 RUN apt-get install -y pkg-config libssl-dev gcc-mingw-w64-x86-64 clang-13
 RUN ln -s /usr/bin/clang-13 /usr/bin/clang
 RUN ln -s /usr/bin/clang-cpp-13 /usr/bin/clang++

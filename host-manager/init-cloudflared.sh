@@ -5,7 +5,7 @@
 
 cloudflared tunnel login
 
-curl -fsSL https://github.com/LcJuves/liangchengj/raw/main/clang/linux-like/config_my_git.sh | sh
+curl -fsSL https://github.com/LcJuves/lcjuves/raw/main/clang/linux-like/config_my_git.sh | sh
 /usr/sbin/sshd >/var/log/bootstrap_sshd.log 2>&1
 cloudflared tunnel delete ssh >/dev/null 2>&1
 TID=$(cloudflared tunnel create ssh | awk 'END{print $NF}')

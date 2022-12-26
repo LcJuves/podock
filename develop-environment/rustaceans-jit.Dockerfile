@@ -1,4 +1,4 @@
-FROM liangchengj/rustaceans:jit
+FROM lcjuves/rustaceans:jit
 
 RUN apt-get install -y xz-utils
 

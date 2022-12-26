@@ -1,4 +1,4 @@
-FROM liangchengj/container-image-builder
+FROM lcjuves/container-image-builder
 
 WORKDIR /root
 

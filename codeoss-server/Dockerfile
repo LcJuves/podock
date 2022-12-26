@@ -1,4 +1,4 @@
-FROM liangchengj/container-base
+FROM lcjuves/container-base
 RUN apt-get install -y git vim inetutils-ping net-tools openssh-server
 ADD codeoss-server-linux-x64-web.tar.gz /usr/local/
 EXPOSE 8000

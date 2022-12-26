@@ -1,5 +1,5 @@
-FROM liangchengj/develop-environment:gitpod
-RUN curl -fsSL https://github.com/LcJuves/liangchengj/raw/main/clang/linux-like/config_my_git.sh | sh
+FROM lcjuves/develop-environment:gitpod
+RUN curl -fsSL https://github.com/LcJuves/lcjuves/raw/main/clang/linux-like/config_my_git.sh | sh
 
 ARG CODEOSS_SERVER_VERSION=dev_test_part17
 RUN curl -fsSL https://github.com/LcJuves/vscode/releases/download/$CODEOSS_SERVER_VERSION/codeoss-server-linux-x64-web.tar.gz | tar -zxC /usr/local/
