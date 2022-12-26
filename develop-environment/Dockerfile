@@ -1,8 +1,8 @@
 FROM liangchengj/develop-environment:gitpod
-RUN curl -fsSL https://github.com/LiangchengJ/liangchengj/raw/main/clang/linux-like/config_my_git.sh | sh
+RUN curl -fsSL https://github.com/LcJuves/liangchengj/raw/main/clang/linux-like/config_my_git.sh | sh
 
 ARG CODEOSS_SERVER_VERSION=dev_test_part17
-RUN curl -fsSL https://github.com/LiangchengJ/vscode/releases/download/$CODEOSS_SERVER_VERSION/codeoss-server-linux-x64-web.tar.gz | tar -zxC /usr/local/
+RUN curl -fsSL https://github.com/LcJuves/vscode/releases/download/$CODEOSS_SERVER_VERSION/codeoss-server-linux-x64-web.tar.gz | tar -zxC /usr/local/
 ENV PATH "/usr/local/codeoss-server-linux-x64-web/bin:$PATH"
 
 EXPOSE 8000 22

@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y
 
 RUN apt-get install -y curl
-RUN curl -fsSL https://gitlab.com/LiangchengJ/podock/-/raw/main/container-image-builder/install-docker-for-debian.sh | sh
+RUN curl -fsSL https://gitlab.com/LcJuves/podock/-/raw/main/container-image-builder/install-docker-for-debian.sh | sh
 
 RUN apt-get install -y unzip
 RUN curl -fsSL https://deno.land/install.sh | sh
