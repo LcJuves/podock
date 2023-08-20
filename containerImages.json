@@ -9,7 +9,7 @@
   },
   {
     "name": "amuse-lang-environment",
-    "tags": ["rust-compiler", "llvmenv-jit", "llvmenv", "latest"]
+    "tags": ["rust-compiler"]
   },
   {
     "name": "rustaceans",
