@@ -7,3 +7,5 @@ develop-environment/node-v16.15.1-linux-x64*
 llvm-toolchain-stretch-13.sources.list
 Python39.tar.xz
 host-manager/cloudflared-linux-amd64
+cmake-3.27.3-linux-x86_64*
+macos-cross-compiler.tar.xz

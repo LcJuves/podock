@@ -6,8 +6,9 @@ fi
 
 (
     cd macos-cross-compiler-builder || exit
-    if [ ! -f "cmake-3.23.1-linux-x86_64.tar.gz" ]; then
-        curl -L -O https://github.com/Kitware/CMake/releases/download/v3.23.1/cmake-3.23.1-linux-x86_64.tar.gz
+    CMAKE_VERSION=3.27.3
+    if [ ! -f "cmake-$CMAKE_VERSION-linux-x86_64.tar.gz" ]; then
+        curl -L -O https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-linux-x86_64.tar.gz
     fi
 )
 
