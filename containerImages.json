@@ -8,14 +8,6 @@
     "tags": ["rust-compiler"]
   },
   {
-    "name": "rustaceans",
-    "tags": ["jit", "latest"]
-  },
-  {
-    "name": "develop-environment",
-    "tags": ["rustaceans-jit", "rustaceans", "jit", "gitpod", "latest"]
-  },
-  {
     "name": "codeoss-server",
     "tags": ["latest"]
   },
