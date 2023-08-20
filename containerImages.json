@@ -4,6 +4,10 @@
     "tags": ["latest"]
   },
   {
+    "name": "macos-cross-compiler-builder",
+    "tags": ["latest"]
+  },
+  {
     "name": "amuse-lang-environment",
     "tags": ["rust-compiler"]
   },
