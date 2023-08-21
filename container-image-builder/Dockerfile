@@ -1,8 +1,4 @@
-FROM debian:stable-slim
-LABEL maintainer 'Liangcheng Juves <email@lcjuves.com>'
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update -y
-
+FROM container-base
 RUN apt-get install -y curl
 RUN curl -fsSL https://gitlab.com/LcJuves/podock/-/raw/main/container-image-builder/install-docker-for-debian.sh | sh
 

@@ -1,10 +1,9 @@
-FROM lcjuves/amuse-lang-environment:llvmenv-jit
+FROM amuse-lang-environment:llvmenv-jit
 RUN apt-get install -y pkg-config libssl-dev gcc-mingw-w64-x86-64 clang-17
 RUN ln -s /usr/bin/clang-17 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-17 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-17 /usr/bin/c++
 RUN rustup target add x86_64-pc-windows-gnu x86_64-apple-darwin aarch64-apple-darwin --toolchain=stable
-ENV MACOS_SDK_VERSION "12.3"
 ADD macos-cross-compiler.tar.xz /root/
 ADD x86-macos-rustc /usr/bin/
 ADD x86-macos-cargo /usr/bin/

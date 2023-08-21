@@ -12,16 +12,31 @@ const ignoreDirs = (parsedArgs["ignoreDirs"] ?? "").split(",");
 const push = (parsedArgs["push"] ?? "false") === "true";
 // console.dir({ buildType, ignoreDirs, push });
 
+async function execCommand(
+  cwd: string,
+  cmd: string | URL,
+  args: string[],
+): Promise<number> {
+  const command = new Deno.Command(cmd, {
+    args,
+    cwd,
+  });
+  const child = command.spawn();
+  const status = await child.status;
+  return status.code;
+}
+
+async function execDockerCommand(cwd: string, args: string[]): Promise<number> {
+  return await execCommand(cwd, "docker", args);
+}
+
 async function buildContainerImage(
   wd: string,
   containerName: string,
   containerTag: string,
 ) {
-  let imageName = `${containerName}:${containerTag}`;
+  const imageName = `${containerName}:${containerTag}`;
   const envCiRegistryUser = Deno.env.get("CI_REGISTRY_USER") ?? "";
-  if (envCiRegistryUser !== "") {
-    imageName = `${envCiRegistryUser}/${imageName}`;
-  }
   if (buildType === "linux" && containerTag.indexOf("win") !== -1) {
     log.info(`Skip windows' container image ${imageName}`);
     return;
@@ -44,27 +59,43 @@ async function buildContainerImage(
     Deno.exit(1);
   }
 
-  const dockerBuildP = Deno.run({
-    cmd: ["docker", "build", "-t", imageName, "-f", dockerfileName, "."],
-    cwd: wd,
-  });
-  const dockerBuildStatus = await dockerBuildP.status();
-  if (dockerBuildStatus.code !== 0) {
+  const dockerBuildStatusCode = await execDockerCommand(wd, [
+    "build",
+    "-t",
+    imageName,
+    "-f",
+    dockerfileName,
+    ".",
+  ]);
+  if (dockerBuildStatusCode !== 0) {
     log.error(`Building image ${imageName} with error!`);
-    Deno.exit(dockerBuildStatus.code);
+    Deno.exit(dockerBuildStatusCode);
   } else {
     log.info(`Build image ${imageName} succeed!`);
   }
 
-  if (push) {
-    const dockerPushP = Deno.run({
-      cmd: ["docker", "push", imageName],
-      cwd: wd,
-    });
-    const dockerPushStatus = await dockerPushP.status();
-    if (dockerPushStatus.code !== 0) {
+  if (push && envCiRegistryUser !== "") {
+    const remoteImageName = `${envCiRegistryUser}/${imageName}`;
+
+    const dockerTagStatusCode = await execDockerCommand(wd, [
+      "tag",
+      imageName,
+      remoteImageName,
+    ]);
+    if (dockerTagStatusCode !== 0) {
+      log.error(`Tagging image ${imageName} with error!`);
+      Deno.exit(dockerTagStatusCode);
+    } else {
+      log.info(`Tagging image ${imageName} succeed!`);
+    }
+
+    const dockerPushStatusCode = await execDockerCommand(wd, [
+      "push",
+      imageName,
+    ]);
+    if (dockerPushStatusCode !== 0) {
       log.error(`Pushing image ${imageName} with error!`);
-      Deno.exit(dockerPushStatus.code);
+      Deno.exit(dockerPushStatusCode);
     } else {
       log.info(`Push image ${imageName} succeed!`);
     }
@@ -72,14 +103,13 @@ async function buildContainerImage(
 }
 
 log.info("Starting pre-build ...");
-const p = Deno.run({
-  cmd: ["bash", "-e", "pre-build.sh"],
-  cwd: currentWorkingDirectory,
-});
-const status = await p.status();
-if (status.code !== 0) {
+const bashStatusCode = await execCommand(currentWorkingDirectory, "bash", [
+  "-e",
+  "pre-build.sh",
+]);
+if (bashStatusCode !== 0) {
   log.error("Pre-building with error!");
-  Deno.exit(status.code);
+  Deno.exit(bashStatusCode);
 } else {
   log.info("Pre-build succeed!");
 }

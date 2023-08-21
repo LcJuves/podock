@@ -1,1 +1,1 @@
-FROM lcjuves/amuse-lang-environment:llvmenv
+FROM amuse-lang-environment:llvmenv

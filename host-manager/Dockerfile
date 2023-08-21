@@ -1,4 +1,4 @@
-FROM lcjuves/container-image-builder
+FROM container-image-builder
 
 WORKDIR /root
 
