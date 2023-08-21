@@ -91,13 +91,13 @@ async function buildContainerImage(
 
     const dockerPushStatusCode = await execDockerCommand(wd, [
       "push",
-      imageName,
+      remoteImageName,
     ]);
     if (dockerPushStatusCode !== 0) {
-      log.error(`Pushing image ${imageName} with error!`);
+      log.error(`Pushing image ${remoteImageName} with error!`);
       Deno.exit(dockerPushStatusCode);
     } else {
-      log.info(`Push image ${imageName} succeed!`);
+      log.info(`Push image ${remoteImageName} succeed!`);
     }
   }
 }
