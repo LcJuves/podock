@@ -4,8 +4,21 @@
 
 tasks:
   - init: |
-      curl -fsSL https://deno.land/install.sh | sh
+      sudo apt-get install -y apt-transport-https
+      wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | \
+          sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
+      echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | \
+          sudo tee /etc/apt/sources.list.d/dart_stable.list
+
+      # sudo apt-get install -y libarchive-tools
+      # DART_SDK_VERSION=3.1.0
+      # DART_SDK_DOWNLOAD_URL=https://storage.googleapis.com/dart-archive/channels/stable/release/$DART_SDK_VERSION/sdk/dartsdk-linux-x64-release.zip
+      # curl -fsSL $DART_SDK_DOWNLOAD_URL | bsdtar -xvf -
     command: |
-      export DENO_INSTALL="$HOME/.deno"
-      export PATH="$DENO_INSTALL/bin:$PATH"
-      export PATH="/workspace/.vscode-remote/extensions/foxundermoon.shell-format-7.0.1/bin:$PATH"
+      sudo apt-get update -y
+      sudo apt-get install -y dart
+      dart --disable-analytics
+
+      _shfmt_path="/workspace/.vscode-remote/extensions/foxundermoon.shell-format-7.0.1-universal/bin"
+      echo "export PATH=\"$_shfmt_path:\$PATH\"" >>~/.bashrc
+      source ~/.bashrc
