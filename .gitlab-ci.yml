@@ -18,6 +18,7 @@ docker-build:
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
     - |
+      (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
       docker run \
           -v "$PWD:/workspace" \
           -v "/var/run/docker.sock:/var/run/docker.sock" \
