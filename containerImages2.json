@@ -1,5 +1,9 @@
 [
   {
+    "name": "container-base",
+    "tags": ["latest"]
+  },
+  {
     "name": "codeoss-server",
     "tags": ["latest"]
   },
