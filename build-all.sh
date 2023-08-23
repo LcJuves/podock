@@ -6,6 +6,8 @@ if [ -n "$CI_REGISTRY_USER" ] && [ -n "$CI_REGISTRY_PASSWORD" ] && [ -n "$CI_REG
     docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
 fi
 
+dart pub get
+
 dart run build.dart --push true --containerInfoFile containerImages1.json
 (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
 
