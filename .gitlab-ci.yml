@@ -18,7 +18,6 @@ docker-build:
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
     - |
-      (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
       docker run \
           -v "$PWD:/workspace" \
           -v "/var/run/docker.sock:/var/run/docker.sock" \
@@ -27,4 +26,4 @@ docker-build:
           -e CI_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD \
           -e CI_REGISTRY_USER=$CI_REGISTRY_USER \
           "$CI_REGISTRY_USER/container-image-builder:latest" bash -exc \
-          "cd /workspace && deno run --allow-read --allow-run --allow-env build.ts --push true"
+          "cd /workspace && sh -e build-all.sh"

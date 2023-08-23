@@ -9,3 +9,5 @@ Python39.tar.xz
 host-manager/cloudflared-linux-amd64
 cmake-3.27.3-linux-x86_64*
 macos-cross-compiler.tar.xz
+pubspec.lock
+.dart_tool/

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "container-base",
+    "tags": ["latest"]
+  },
+  {
+    "name": "macos-cross-compiler-builder",
+    "tags": ["latest"]
+  },
+  {
+    "name": "amuse-lang-environment",
+    "tags": ["rust-compiler", "llvmenv-jit", "llvmenv", "latest"]
+  },
+  {
+    "name": "rustaceans",
+    "tags": ["jit", "latest"]
+  },
+  {
+    "name": "develop-environment",
+    "tags": ["rustaceans-jit", "rustaceans", "jit", "gitpod", "latest"]
+  }
+]
