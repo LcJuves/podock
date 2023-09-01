@@ -13,4 +13,7 @@ RUN python3 -m venv /usr/venv
 RUN /usr/venv/bin/pip3 install --use-pep517 https://github.com/codedread/scour/archive/master.zip
 ENV PATH "/usr/venv/bin:$PATH"
 
+RUN apt-get install -y openjdk-17-jre
+ADD RemoveSvgWidthAndHeight.java /usr/local/
+
 WORKDIR /root
