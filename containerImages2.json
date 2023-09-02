@@ -19,10 +19,10 @@
     "name": "v2node",
     "tags": ["self-hosted", "latest"]
   },
-  {
-    "name": "git-scm-builder",
-    "tags": ["latest"]
-  },
+  // {
+  //   "name": "git-scm-builder",
+  //   "tags": ["latest"]
+  // },
   {
     "name": "linuxfromscratch-builder",
     "tags": ["latest"]

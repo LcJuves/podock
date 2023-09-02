@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'dart:convert';
 
 import 'package:args/args.dart';
+import 'package:json5/json5.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart' as p;
 
@@ -109,7 +109,7 @@ Future<void> execPreBuild(String wd) async {
 Future<dynamic> readContainerImages(String wd, String containerInfoFile) async {
   final fullPath = p.join(wd, containerInfoFile);
   final josnString = await File(fullPath).readAsString();
-  return jsonDecode(josnString);
+  return JSON5.parse(josnString);
 }
 
 Future<void> main(List<String> args) async {
