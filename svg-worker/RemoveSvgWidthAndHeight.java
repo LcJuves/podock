@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -23,10 +24,13 @@ public class RemoveSvgWidthAndHeight {
         rooElement.removeAttribute("height");
 
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
         DOMSource source = new DOMSource(document);
         BufferedWriter writer =
                 new BufferedWriter(new OutputStreamWriter(new FileOutputStream(svg)));
         StreamResult result = new StreamResult(writer);
         transformer.transform(source, result);
+        writer.flush();
+        writer.close();
     }
 }
