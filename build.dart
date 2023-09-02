@@ -35,11 +35,11 @@ Future<void> buildContainerImage(String wd, String buildType,
   final imageName = "$containerName:$containerTag";
   final envCIRegistryUser = Platform.environment["CI_REGISTRY_USER"] ?? '';
   if (buildType == 'linux' && containerTag.contains('win')) {
-    log.info("Skip windows' container image ${imageName}");
+    log.warning("Skip windows' container image ${imageName}");
     return;
   }
   if (buildType == 'windows' && !containerTag.contains('win')) {
-    log.info("Skip linux's container image ${imageName}");
+    log.warning("Skip linux's container image ${imageName}");
     return;
   }
   log.info("Starting build image ${imageName} ...");
@@ -65,7 +65,7 @@ Future<void> buildContainerImage(String wd, String buildType,
     log.severe("Building image $imageName with error!");
     exit(dockerBuildStatusCode);
   } else {
-    log.info("Build image ${imageName} succeed!");
+    log.finest("Build image ${imageName} succeed!");
   }
 
   if (push && envCIRegistryUser.isNotEmpty) {
@@ -79,7 +79,7 @@ Future<void> buildContainerImage(String wd, String buildType,
       log.severe("Tagging image ${imageName} with error!");
       exit(dockerTagStatusCode);
     } else {
-      log.info("Tagging image ${imageName} succeed!");
+      log.finest("Tagging image ${imageName} succeed!");
     }
 
     final dockerPushStatusCode = await execContainerProviderCommand(wd, [
@@ -90,7 +90,7 @@ Future<void> buildContainerImage(String wd, String buildType,
       log.severe("Pushing image ${remoteImageName} with error!");
       exit(dockerPushStatusCode);
     } else {
-      log.info("Push image ${remoteImageName} succeed!");
+      log.finest("Push image ${remoteImageName} succeed!");
     }
   }
 }
@@ -102,7 +102,7 @@ Future<void> execPreBuild(String wd) async {
     log.severe("Pre-building with error!");
     exit(bashStatusCode);
   } else {
-    log.info("Pre-build succeed!");
+    log.finest("Pre-build succeed!");
   }
 }
 
@@ -115,8 +115,15 @@ Future<dynamic> readContainerImages(String wd, String containerInfoFile) async {
 Future<void> main(List<String> args) async {
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen((record) {
-    print(
-        '${record.level.name}: ${record.time.toUtc().toIso8601String()}: ${record.message}');
+    final sgrNone = "\x1b[0m";
+    var ansiColor = switch (record.level) {
+      Level.FINEST || Level.FINER || Level.FINE => "\x1b[32m",
+      Level.INFO => "\x1b[34m",
+      Level.WARNING => "\x1b[33m",
+      Level.SEVERE => "\x1b[31m",
+      _ => sgrNone
+    };
+    print('$ansiColor${record.level.name}: ${record.message}$sgrNone');
   });
 
   final results = initArgParser(args);
