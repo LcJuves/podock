@@ -16,5 +16,5 @@ dart run build.dart --push $_PUSH --containerInfoFile containerImages1.json
 dart run build.dart --push $_PUSH --containerInfoFile containerImages2.json
 (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
 
-dart run build.dart --push $_PUSH --containerInfoFile containerImages3.json
+# dart run build.dart --push $_PUSH --containerInfoFile containerImages3.json
 # (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
