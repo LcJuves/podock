@@ -10,7 +10,7 @@ fi
 
 dart pub get
 
-dart --enable-experiment=native-assets run build.dart --push $_PUSH --containerInfoFile containerImages1.json
+dart run --enable-experiment=native-assets build.dart --push $_PUSH --containerInfoFile containerImages1.json
 (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
 
 dart run build.dart --push $_PUSH --containerInfoFile containerImages2.json
