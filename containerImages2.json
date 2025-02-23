@@ -12,10 +12,6 @@
     "tags": ["latest"]
   },
   {
-    "name": "py3-builder",
-    "tags": ["latest"]
-  },
-  {
     "name": "v2node",
     "tags": ["self-hosted", "latest"]
   },
