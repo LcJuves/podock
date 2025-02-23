@@ -16,13 +16,6 @@
 )
 
 (
-    cd v2node || exit
-    if [ ! -f "Python39.tar.xz" ]; then
-        curl -L -O https://gitlab.com/LcJuves/podock/-/raw/main/py3-builder/Python39.tar.xz
-    fi
-)
-
-(
     cd host-manager || exit
     if [ ! -f "cloudflared-linux-amd64" ]; then
         curl -L -O https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
