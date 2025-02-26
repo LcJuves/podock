@@ -16,7 +16,7 @@ tasks:
       # curl -fsSL $DART_SDK_DOWNLOAD_URL | bsdtar -xvf -
     command: |
       sudo apt-get update -y
-      sudo apt-get install -y dart
+      sudo apt-get install -y dart=3.1.5-1
       dart --disable-analytics
 
       _shfmt_path="/workspace/.vscode-remote/extensions/foxundermoon.shell-format-7.0.1-universal/bin"
