@@ -22,6 +22,21 @@ export default {
     "removeUselessDefs",
     "removeUselessStrokeAndFill",
     "removeEmptyAttrs",
+    "convertColors",
+    {
+      name: "convertTransform",
+      params: {
+        convertToShorts: true,
+        floatPrecision: 3,
+        transformPrecision: 5,
+        matrixToTransform: true,
+        shortTranslate: true,
+        shortScale: true,
+        shortRotate: true,
+        removeUseless: true,
+        collapseIntoOne: true,
+      },
+    },
     "sortAttrs",
 
     {
