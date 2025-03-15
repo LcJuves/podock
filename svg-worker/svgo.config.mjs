@@ -16,6 +16,8 @@ export default {
     "removeUselessDefs",
     "removeUselessStrokeAndFill",
     "removeEmptyAttrs",
+    "removeXlink",
+    "removeMetadata",
     "removeEmptyContainers",
     "convertColors",
     "sortAttrs",
