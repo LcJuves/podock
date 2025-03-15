@@ -18,6 +18,11 @@ export default {
     "cleanupAttrs",
     "convertStyleToAttrs",
     "removeHiddenElems",
+    "removeScriptElement",
+    "removeUselessDefs",
+    "removeUselessStrokeAndFill",
+    "removeEmptyAttrs",
+    "sortAttrs",
 
     {
       name: "minifyStyles",
