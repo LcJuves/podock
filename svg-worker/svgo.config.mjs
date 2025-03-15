@@ -2,13 +2,6 @@ export default {
   plugins: [
     "preset-default", // built-in plugins enabled by default
     "mergeStyles",
-    {
-      name: "inlineStyles",
-      params: {
-        onlyMatchedOnce: false,
-        removeMatchedSelectors: true,
-      },
-    },
     "removeComments",
     "removeDesc",
     "mergePaths",
@@ -22,7 +15,16 @@ export default {
     "removeUselessDefs",
     "removeUselessStrokeAndFill",
     "removeEmptyAttrs",
+    "removeEmptyContainers",
     "convertColors",
+    "sortAttrs",
+    {
+      name: "inlineStyles",
+      params: {
+        onlyMatchedOnce: false,
+        removeMatchedSelectors: true,
+      },
+    },
     {
       name: "convertTransform",
       params: {
@@ -37,8 +39,6 @@ export default {
         collapseIntoOne: true,
       },
     },
-    "sortAttrs",
-
     {
       name: "minifyStyles",
       params: {
