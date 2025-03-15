@@ -3,6 +3,7 @@ export default {
     "preset-default", // built-in plugins enabled by default
     "mergeStyles",
     "removeComments",
+    "removeDimensions",
     "removeDesc",
     "mergePaths",
     "convertColors",
