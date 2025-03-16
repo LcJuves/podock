@@ -15,6 +15,12 @@ export default {
       },
     },
     {
+      name: "removeDesc",
+      params: {
+        removeAny: true,
+      },
+    },
+    {
       name: "removeUnknownsAndDefaults",
       params: {
         unknownContent: true,
