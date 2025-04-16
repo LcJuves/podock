@@ -2,11 +2,11 @@
 # Created at 2023/8/23 20:43
 # @author Liangcheng Juves
 
-_PUSH=false
+local _PUSH=false
 if [ -n "$CI_REGISTRY_USER" ] && [ -n "$CI_REGISTRY_PASSWORD" ] && [ -n "$CI_REGISTRY" ]; then
     # Working with the Docker Container registry
     # docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
-    
+
     # Working with the GitHub Container registry
     docker login -u "$CI_REGISTRY_GHCR_USER" -p "$CR_PAT" "$CI_REGISTRY"
     _PUSH=true
