@@ -21,9 +21,12 @@ docker-build:
       docker run \
           -v "$PWD:/workspace" \
           -v "/var/run/docker.sock:/var/run/docker.sock" \
-          -e CI_REGISTRY=$CI_REGISTRY \
+          -e CI_REGISTRY_DOCKER=$CI_REGISTRY_DOCKER \
+          -e CI_REGISTRY_GHCR=$CI_REGISTRY_GHCR \
           -e CI_REGISTRY_IMAGE=$CI_REGISTRY_IMAGE \
           -e CI_REGISTRY_PASSWORD=$CI_REGISTRY_PASSWORD \
           -e CI_REGISTRY_USER=$CI_REGISTRY_USER \
+          -e CR_PAT=$CR_PAT \
+          -e CI_REGISTRY_GHCR_USER=$CI_REGISTRY_GHCR_USER \
           "$CI_REGISTRY_USER/container-image-builder:latest" bash -exc \
           "cd /workspace && sh -e build-all.sh"
