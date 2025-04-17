@@ -2,7 +2,7 @@
 # Created at 2023/8/23 20:43
 # @author Liangcheng Juves
 
-local _PUSH=false
+_PUSH=false
 if [ -n "$CI_REGISTRY_USER" ] && [ -n "$CI_REGISTRY_PASSWORD" ] && [ -n "$CI_REGISTRY" ]; then
     # Working with the Docker Container registry
     # docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
