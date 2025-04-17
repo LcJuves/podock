@@ -7,14 +7,14 @@ RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 RUN apt-get update -y
 
 ADD cmake-3.27.3-linux-x86_64.tar.gz /opt/
-ENV PATH "/opt/cmake-3.27.3-linux-x86_64/bin:$PATH"
+ENV PATH="/opt/cmake-3.27.3-linux-x86_64/bin:$PATH"
 RUN apt-get install -y make git
 RUN apt-get install -y libssl-dev zlib1g-dev
 RUN apt-get install -y clang-17 clang++-17
 RUN ln -s /usr/bin/clang-17 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-17 /usr/bin/clang++
 RUN ln -s /usr/lib/llvm-17/bin/llvm-config /usr/bin/llvm-config
-ENV LLVM_SYS_170_PREFIX /usr/lib/llvm-17
+ENV LLVM_SYS_170_PREFIX=/usr/lib/llvm-17
 RUN apt-get install -y liblzma-dev libxml2-dev cpio libbz2-dev llvm-17-dev uuid-dev
 RUN apt-get install -y libmpc-dev libmpfr-dev libgmp-dev
 RUN apt-get install -y autoconf libacl1-dev libext2fs-dev

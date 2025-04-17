@@ -9,7 +9,7 @@ ADD x86-macos-rustc /usr/bin/
 ADD x86-macos-cargo /usr/bin/
 ADD arm-macos-rustc /usr/bin/
 ADD arm-macos-cargo /usr/bin/
-ENV MACOS_CROSS_COMPILER /root/macos-cross-compiler
+ENV MACOS_CROSS_COMPILER=/root/macos-cross-compiler
 
 RUN echo "[target.x86_64-apple-darwin]" >>/root/.cargo/config
 RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config

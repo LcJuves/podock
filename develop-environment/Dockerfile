@@ -4,7 +4,7 @@ RUN curl -fsSL https://github.com/LcJuves/lcjuves/raw/main/clang/linux-like/conf
 ARG CODEOSS_SERVER_VERSION=dev_test_part17
 ARG CODEOSS_SERVER_URL=https://github.com/LcJuves/vscode/releases/download/$CODEOSS_SERVER_VERSION/codeoss-server-linux-x64-web.tar.gz
 RUN curl -fsSL $CODEOSS_SERVER_URL | tar -zxC /usr/local/
-ENV PATH "/usr/local/codeoss-server-linux-x64-web/bin:$PATH"
+ENV PATH="/usr/local/codeoss-server-linux-x64-web/bin:$PATH"
 
 EXPOSE 8000 22
 
