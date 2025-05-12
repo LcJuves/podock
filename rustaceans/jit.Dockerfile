@@ -4,22 +4,22 @@ RUN ln -s /usr/bin/clang-19 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-19 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-19 /usr/bin/c++
 RUN rustup target add x86_64-pc-windows-gnu x86_64-apple-darwin aarch64-apple-darwin --toolchain=stable
-ADD macos-cross-compiler.tar.xz /root/
+ADD osx-cross-compiler.tar.xz /root/
 ADD x86-macos-rustc /usr/bin/
 ADD x86-macos-cargo /usr/bin/
 ADD arm-macos-rustc /usr/bin/
 ADD arm-macos-cargo /usr/bin/
-ENV MACOS_CROSS_COMPILER=/root/macos-cross-compiler
+ENV OSX_CROSS_COMPILER=/root/osx-cross-compiler
 
 RUN echo "[target.x86_64-apple-darwin]" >>/root/.cargo/config
-RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config
-RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-ar' -printf 'ar = "%p"\n' >>/root/.cargo/config
+RUN find "$OSX_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config
+RUN find "$OSX_CROSS_COMPILER/bin" -maxdepth 1 -name 'x86_64-[A-Za-b]*[0-9][0-9]*-ar' -printf 'ar = "%p"\n' >>/root/.cargo/config
 RUN echo >>/root/.cargo/config
 RUN echo "[target.aarch64-apple-darwin]" >>/root/.cargo/config
-RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'aarch64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config
-RUN find "$MACOS_CROSS_COMPILER/bin" -maxdepth 1 -name 'aarch64-[A-Za-b]*[0-9][0-9]*-ar' -printf 'ar = "%p"\n' >>/root/.cargo/config
+RUN find "$OSX_CROSS_COMPILER/bin" -maxdepth 1 -name 'aarch64-[A-Za-b]*[0-9][0-9]*-cc' -printf 'linker = "%p"\n' >>/root/.cargo/config
+RUN find "$OSX_CROSS_COMPILER/bin" -maxdepth 1 -name 'aarch64-[A-Za-b]*[0-9][0-9]*-ar' -printf 'ar = "%p"\n' >>/root/.cargo/config
 RUN echo >>/root/.cargo/config
-RUN echo "$MACOS_CROSS_COMPILER/lib" | tee /etc/ld.so.conf.d/darwin.conf
+RUN echo "$OSX_CROSS_COMPILER/lib" | tee /etc/ld.so.conf.d/darwin.conf
 RUN ldconfig
 
 WORKDIR /root
