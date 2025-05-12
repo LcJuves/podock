@@ -32,3 +32,8 @@
         curl -L -O -s https://github.com/LcJuves/osx-cross-compiler/releases/download/osx-cross-compiler/osx-cross-compiler.tar.xz
     fi
 )
+
+(
+    cd git-scm-builder || exit
+    cp ../amuse-lang-environment/llvm-toolchain-bookworm-19.sources.list .
+)
