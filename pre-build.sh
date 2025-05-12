@@ -28,7 +28,7 @@
 
 (
     cd rustaceans || exit
-    if [ ! -f "macos-cross-compiler.tar.xz" ]; then
-        curl -L -O -s https://github.com/LcJuves/macos-cross-compiler/releases/download/mac-os-cross-compiler/macos-cross-compiler.tar.xz
+    if [ ! -f "osx-cross-compiler.tar.xz" ]; then
+        curl -L -O -s https://github.com/LcJuves/osx-cross-compiler/releases/download/osx-cross-compiler/osx-cross-compiler.tar.xz
     fi
 )
