@@ -4,7 +4,7 @@
     "tags": ["latest"]
   },
   {
-    "name": "macos-cross-compiler-builder",
+    "name": "osx-cross-compiler-builder",
     "tags": ["latest"]
   },
   {

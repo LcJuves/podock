@@ -3,7 +3,7 @@ name = "container-base"
 tags = [ "latest" ]
 
 [[containerImages]]
-name = "macos-cross-compiler-builder"
+name = "osx-cross-compiler-builder"
 tags = [ "latest" ]
 
 [[containerImages]]
