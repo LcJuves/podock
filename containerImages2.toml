@@ -1,0 +1,35 @@
+[[containerImages]]
+name = "container-base"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "codeoss-server"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "container-image-builder"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "v2node"
+tags = [ "self-hosted", "latest" ]
+
+# [[containerImages]]
+# name = "git-scm-builder"
+# tags = [ "latest" ]
+
+[[containerImages]]
+name = "linuxfromscratch-builder"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "host-manager"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "svg-worker"
+tags = [ "latest" ]
+
+[[containerImages]]
+name = "fserv-worker"
+tags = [ "latest" ]

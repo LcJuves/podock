@@ -1,7 +1,8 @@
 #!/bin/sh
 
 (
-    cd macos-cross-compiler-builder || exit
+    cd osx-cross-compiler-builder || exit
+    cp ../amuse-lang-environment/llvm-toolchain-bookworm-19.sources.list .
     CMAKE_VERSION=3.27.3
     if [ ! -f "cmake-$CMAKE_VERSION-linux-x86_64.tar.gz" ]; then
         curl -L -O https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-linux-x86_64.tar.gz
@@ -27,7 +28,12 @@
 
 (
     cd rustaceans || exit
-    if [ ! -f "macos-cross-compiler.tar.xz" ]; then
-        curl -L -O -s https://github.com/LcJuves/macos-cross-compiler/releases/download/mac-os-cross-compiler/macos-cross-compiler.tar.xz
+    if [ ! -f "osx-cross-compiler.tar.xz" ]; then
+        curl -L -O -s https://github.com/LcJuves/osx-cross-compiler/releases/download/osx-cross-compiler/osx-cross-compiler.tar.xz
     fi
+)
+
+(
+    cd git-scm-builder || exit
+    cp ../amuse-lang-environment/llvm-toolchain-bookworm-19.sources.list .
 )

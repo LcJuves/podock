@@ -14,6 +14,7 @@ ArgResults initArgParser(List<String> args) {
   parser.addOption('ignoreDirs', abbr: 'I', defaultsTo: '');
   parser.addOption('push',
       abbr: 'P', allowed: ['false', 'true'], defaultsTo: 'false');
+  parser.addOption('registry', abbr: 'R', defaultsTo: 'docker.io');
   parser.addOption('containerInfoFile',
       abbr: 'C', defaultsTo: 'containerImages.json');
   return parser.parse(args);
@@ -30,10 +31,16 @@ Future<int> execContainerProviderCommand(String wd, List<String> args) async {
   return await execCommand(wd, 'docker', args);
 }
 
-Future<void> buildContainerImage(String wd, String buildType,
-    String containerName, String containerTag, bool push) async {
+Future<void> buildContainerImage(
+    String wd,
+    String buildType,
+    String containerName,
+    String containerTag,
+    String registry,
+    bool push) async {
   final imageName = "$containerName:$containerTag";
-  final envCIRegistryUser = Platform.environment["CI_REGISTRY_USER"] ?? '';
+  final envCIRegistryUser =
+      Platform.environment["CI_REGISTRY_USER"] ?? 'lcjuves';
   if (buildType == 'linux' && containerTag.contains('win')) {
     log.warning("Skip windows' container image ${imageName}");
     return;
@@ -69,7 +76,7 @@ Future<void> buildContainerImage(String wd, String buildType,
   }
 
   if (push && envCIRegistryUser.isNotEmpty) {
-    final remoteImageName = "$envCIRegistryUser/$imageName";
+    final remoteImageName = "$registry/$envCIRegistryUser/$imageName";
     final dockerTagStatusCode = await execContainerProviderCommand(wd, [
       "tag",
       imageName,
@@ -131,6 +138,7 @@ Future<void> main(List<String> args) async {
   final ignoreDirs = results['ignoreDirs'].toString().split(',');
   final push = bool.parse(results['push']);
   final containerInfoFile = results['containerInfoFile'];
+  final registry = results['registry'];
 
   final currentScriptPath = Platform.script.normalizePath().toFilePath();
   final cwd = currentScriptPath.substring(
@@ -149,7 +157,7 @@ Future<void> main(List<String> args) async {
     final containerWd = p.join(cwd, containerName);
     for (final containerTag in containerImage["tags"]) {
       await buildContainerImage(
-          containerWd, buildType, containerName, containerTag, push);
+          containerWd, buildType, containerName, containerTag, registry, push);
     }
   }
 }
