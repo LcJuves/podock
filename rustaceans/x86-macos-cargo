@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [ -z "$MACOS_SDK_VERSION" ]; then
+    MACOS_SDK_VERSION=15.4
+fi
+
 PATH="$OSX_CROSS_COMPILER/bin:$PATH" \
     C_INCLUDE_PATH="$OSX_CROSS_COMPILER/SDK/MacOSX${MACOS_SDK_VERSION}.sdk/usr/include" \
     CC="$OSX_CROSS_COMPILER/bin/o64-clang" \
