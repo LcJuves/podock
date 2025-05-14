@@ -4,7 +4,7 @@ RUN ln -s /usr/bin/clang-19 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-19 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-19 /usr/bin/c++
 RUN rustup target add aarch64-apple-darwin x86_64-apple-darwin --toolchain=stable
-RUN rustup target add aarch64-pc-windows-gnu  x86_64-pc-windows-gnu --toolchain=stable
+RUN rustup target add x86_64-pc-windows-gnu --toolchain=stable
 ADD osx-cross-compiler.tar.xz /root/
 ADD osx-aarch64-darwin-rustc /usr/bin/
 ADD osx-aarch64-darwin-cargo /usr/bin/
