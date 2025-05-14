@@ -1,0 +1,36 @@
+name: Podock Container Images CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches:
+      - $default-branch
+      - dev/*
+
+  pull_request:
+    branches:
+      - $default-branch
+
+env:
+  CI_REGISTRY_DOCKER: ${{ secrets.CI_REGISTRY_DOCKER }}
+  CI_REGISTRY_GHCR: ${{ secrets.CI_REGISTRY_GHCR }}
+  CI_REGISTRY_GHCR_USER: ${{ secrets.CI_REGISTRY_GHCR_USER }}
+  CI_REGISTRY_PASSWORD: ${{ secrets.CI_REGISTRY_PASSWORD }}
+  CI_REGISTRY_USER: ${{ secrets.CI_REGISTRY_USER }}
+  CR_PAT: ${{ secrets.CR_PAT }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-container-images:
+    name: Build Container Images
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/lcjuves/container-image-builder:latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Building ...
+        run: sh -e build-all.sh
