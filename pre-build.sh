@@ -31,6 +31,7 @@
     if [ ! -f "osx-cross-compiler.tar.xz" ]; then
         curl -L -O -s https://github.com/LcJuves/osx-cross-compiler/releases/download/osx-cross-compiler/osx-cross-compiler.tar.xz
         curl -L -O https://repo.msys2.org/mingw/mingw32/mingw-w64-i686-clang-20.1.3-1-any.pkg.tar.zst
+        apt-get install -y zstd
         tar -xvf mingw-w64-i686-clang-20.1.3-1-any.pkg.tar.zst
     fi
 )
