@@ -1,0 +1,3 @@
+#!/bin/sh
+
+wine "$MINGW32_CLANG_COMPILER/bin/clang-linker-wrapper.exe" "$@"
