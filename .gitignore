@@ -15,4 +15,3 @@ rustaceans/.BUILDINFO
 rustaceans/.MTREE
 rustaceans/.PKGINFO
 rustaceans/mingw-w64-i686-clang-*-any.pkg.tar.zst
-crun
