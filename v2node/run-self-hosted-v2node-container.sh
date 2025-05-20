@@ -16,7 +16,7 @@ V2NODE_SELF_HOSTED_CONTAINER_ID=$(podman run --runtime /usr/bin/crun -itd --priv
     -h "$(echo "$domain" | base64)" \
     -v /run/podman/podman.sock:/run/podman/podman.sock \
     -p 443:443 \
-    lcjuves/v2node:self-hosted /sbin/init)
+    ghcr.io/lcjuves/v2node:self-hosted /sbin/init)
 
 podman exec -it \
     --workdir /root "$V2NODE_SELF_HOSTED_CONTAINER_ID" \
