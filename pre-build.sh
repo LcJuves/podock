@@ -37,6 +37,14 @@
 )
 
 (
+    cd v2node || exit
+    if [ ! -f "crun" ]; then
+        curl -L -o crun -s https://github.com/containers/crun/releases/download/1.21/crun-1.21-linux-amd64
+        chmod +x crun
+    fi
+)
+
+(
     cd git-scm-builder || exit
     cp ../amuse-lang-environment/llvm-toolchain-bookworm-19.sources.list .
 )
