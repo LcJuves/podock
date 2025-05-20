@@ -8,5 +8,5 @@ RUN apt-get install -y certbot vim podman
 WORKDIR /root
 ADD certbot_renew.sh .
 ADD localhost.conf /etc/nginx/conf.d/
-ADD curn /usr/bin/
+ADD crun /usr/bin/
 ADD init-self-hosted-v2node.sh .
