@@ -12,6 +12,8 @@ if [ -z "$sec_key" ]; then
     sec_key="$(date +%s)"
 fi
 
+mount -t cgroup
+
 V2NODE_SELF_HOSTED_CONTAINER_ID=$(podman run -itd --privileged \
     -h "$(echo "$domain" | base64)" \
     -v /var/run/podman/podman.sock:/var/run/podman/podman.sock \
