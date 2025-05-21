@@ -1,6 +1,6 @@
-FROM v2demo/v2demo:latest
-RUN sed -i 's/latest\///' /opt/startup.sh
-RUN sed -i 's/\/v2ray-l/\/v4.45.2\/v2ray-l/' /opt/startup.sh
+FROM alpine:latest
+ADD startup.sh /opt/
+RUN apk add --no-cache --virtual .build-deps ca-certificates curl
 
 ENV PORT=443
 ENV WS_URI=/
