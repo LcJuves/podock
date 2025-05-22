@@ -25,16 +25,13 @@ cat <<EOF >"${DIR_TMP}"/${CONFIG_JSON_FILE_NAME}
         "disableInsecureEncryption": true
       },
       "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "${WS_URI}"
-        }
-      },
-      "quicSettings": {
-        "security": "chacha20-poly1305",
-        "key": "${SEC_KEY}",
-        "header": {
-          "type": "wechat-video"
+        "network": "quic",
+        "quicSettings": {
+          "security": "chacha20-poly1305",
+          "key": "${SEC_KEY}",
+          "header": {
+            "type": "wechat-video"
+          }
         }
       }
     }

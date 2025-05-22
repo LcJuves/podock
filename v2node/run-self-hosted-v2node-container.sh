@@ -8,11 +8,15 @@ if [ -z "$mail" ]; then
     mail=mail@localhost
 fi
 
+if [ -z "$sec_key" ]; then
+    sec_key="$(date +%s)"
+fi
+
 V2NODE_SELF_HOSTED_CONTAINER_ID=$(docker run -itd --privileged \
     -h "$(echo "$domain" | base64)" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -p 443:443 \
-    -e SEC_KEY="$SEC_KEY" \
+    -e SEC_KEY="$sec_key" \
     ghcr.io/lcjuves/v2node:self-hosted /sbin/init)
 
 docker exec -it \
