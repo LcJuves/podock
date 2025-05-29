@@ -45,7 +45,7 @@ cat <<EOF >"${DIR_TMP}"/${CONFIG_JSON_FILE_NAME}
 EOF
 
 curl --retry 3 -H "Cache-Control: no-cache" -s \
-    -L https://github.com/v2fly/v2ray-core/releases/download/v5.31.0/v2ray-linux-64.zip \
+    -L https://github.com/v2fly/v2ray-core/releases/download/v5.32.0/v2ray-linux-64.zip \
     -o "${DIR_TMP}"/${V2_ZIP_FILE_NAME}
 busybox unzip "${DIR_TMP}"/${V2_ZIP_FILE_NAME} -d "${DIR_TMP}"
 
