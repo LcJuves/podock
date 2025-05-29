@@ -1,11 +1,10 @@
 FROM amuse-lang-environment:llvmenv-jit
-RUN apt-get install -y pkg-config libssl-dev gcc-mingw-w64-x86-64 gcc-mingw-w64-i686 clang-19
+RUN apt-get install -y pkg-config libssl-dev gcc-mingw-w64-x86-64 clang-19
 RUN ln -s /usr/bin/clang-19 /usr/bin/clang
 RUN ln -s /usr/bin/clang++-19 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-19 /usr/bin/c++
 RUN rustup target add aarch64-apple-darwin x86_64-apple-darwin --toolchain=stable
-RUN rustup target add aarch64-pc-windows-gnullvm x86_64-pc-windows-gnu \
-    i686-pc-windows-gnu --toolchain=stable
+RUN rustup target add aarch64-pc-windows-gnullvm x86_64-pc-windows-gnu --toolchain=stable
 # RUN rustup target add aarch64-unknown-linux-gnu aarch64-unknown-linux-musl \
 #     aarch64-unknown-linux-ohos --toolchain=stable
 # RUN rustup target add aarch64-unknown-fuchsia aarch64-unknown-uefi --toolchain=stable
