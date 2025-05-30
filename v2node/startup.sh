@@ -50,7 +50,7 @@ curl --retry 3 -H "Cache-Control: no-cache" -s \
 busybox unzip "${DIR_TMP}"/${V2_ZIP_FILE_NAME} -d "${DIR_TMP}"
 
 # Convert to protobuf format configuration
-"${DIR_TMP}"/v2ctl config "${DIR_TMP}"/${CONFIG_JSON_FILE_NAME} >${DIR_CONFIG}/${CONFIG_PB_FILE_NAME}
+# "${DIR_TMP}"/v2ctl config "${DIR_TMP}"/${CONFIG_JSON_FILE_NAME} >${DIR_CONFIG}/${CONFIG_PB_FILE_NAME}
 
 # Install V2Demo
 install -m 755 "${DIR_TMP}"/v2ray ${DIR_RUNTIME}
@@ -60,4 +60,4 @@ rm -rf "${DIR_TMP}"
 rm -f "$(realpath "$0")"
 
 # Run V2Demo
-${DIR_RUNTIME}/v2ray -config=${DIR_CONFIG}/${CONFIG_PB_FILE_NAME} >/var/log/v2demo.log 2>&1
+${DIR_RUNTIME}/v2ray -config=${DIR_CONFIG}/${CONFIG_JSON_FILE_NAME} >/var/log/v2demo.log 2>&1
