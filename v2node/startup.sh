@@ -60,4 +60,4 @@ rm -rf "${DIR_TMP}"
 rm -f "$(realpath "$0")"
 
 # Run V2Demo
-${DIR_RUNTIME}/v2ray run -c ${DIR_CONFIG}/${CONFIG_JSON_FILE_NAME} >/var/log/v2demo.log 2>&1
+${DIR_RUNTIME}/v2ray run -c "${DIR_TMP}"/${CONFIG_JSON_FILE_NAME} >/var/log/v2demo.log 2>&1
