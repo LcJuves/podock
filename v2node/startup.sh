@@ -9,7 +9,7 @@ CONFIG_PB_FILE_NAME=v2demo.pb
 V2_ZIP_FILE_NAME=v2demo-linux-64.zip
 
 # Write V2Demo configuration
-cat <<EOF >"${DIR_TMP}"/${CONFIG_JSON_FILE_NAME}
+cat <<EOF >"${DIR_CONFIG}"/${CONFIG_JSON_FILE_NAME}
 {
   "inbounds": [
     {
@@ -50,7 +50,7 @@ curl --retry 3 -H "Cache-Control: no-cache" -s \
 busybox unzip "${DIR_TMP}"/${V2_ZIP_FILE_NAME} -d "${DIR_TMP}"
 
 # Convert to protobuf format configuration
-# "${DIR_TMP}"/v2ctl config "${DIR_TMP}"/${CONFIG_JSON_FILE_NAME} >${DIR_CONFIG}/${CONFIG_PB_FILE_NAME}
+# "${DIR_TMP}"/v2ctl config "${DIR_CONFIG}"/${CONFIG_JSON_FILE_NAME} >${DIR_CONFIG}/${CONFIG_PB_FILE_NAME}
 
 # Install V2Demo
 install -m 755 "${DIR_TMP}"/v2ray ${DIR_RUNTIME}
