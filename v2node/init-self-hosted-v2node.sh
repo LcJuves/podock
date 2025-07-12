@@ -10,7 +10,7 @@ domain="$2"
 }
 
 V2NODE_CONTAINER_ID=$(docker run -itd \
-    -p 4433:443 -h "v2node" \
+    -p 443:443 -h "v2node" \
     ghcr.io/lcjuves/v2node)
 echo "v2node's container id: $V2NODE_CONTAINER_ID"
 
