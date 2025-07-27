@@ -8,10 +8,6 @@ if [ -z "$mail" ]; then
     mail=mail@localhost
 fi
 
-if [ -z "$sec_key" ]; then
-    sec_key="$(date +%s)"
-fi
-
 mount -t cgroup
 
 CODEOSS_SERVER_SELF_HOSTED_CONTAINER_ID=$(podman run -itd --privileged \
