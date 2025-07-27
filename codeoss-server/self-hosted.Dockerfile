@@ -9,4 +9,4 @@ WORKDIR /root
 ADD certbot_renew.sh .
 ADD localhost.conf /etc/nginx/conf.d/
 
-ADD init-self-hosted-v2node.sh .
+ADD init-self-hosted-codeoss-server.sh .

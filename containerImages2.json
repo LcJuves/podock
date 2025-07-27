@@ -5,7 +5,7 @@
   },
   {
     "name": "codeoss-server",
-    "tags": ["latest"]
+    "tags": ["self-hosted", "latest"]
   },
   {
     "name": "container-image-builder",
