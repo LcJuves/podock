@@ -8,8 +8,6 @@ if [ -z "$mail" ]; then
     mail=mail@localhost
 fi
 
-mount -t cgroup
-
 CODEOSS_SERVER_SELF_HOSTED_CONTAINER_ID=$(podman run -itd --privileged \
     -h "$(echo "$domain" | base64)" \
     -v /var/run/podman/podman.sock:/var/run/podman/podman.sock \
