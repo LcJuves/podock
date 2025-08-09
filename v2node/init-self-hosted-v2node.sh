@@ -9,7 +9,7 @@ domain="$2"
     echo "certbot generated with error!"
 }
 
-V2NODE_CONTAINER_ID=$(podman run -itd \
+V2NODE_CONTAINER_ID=$(docker run -itd \
     -p 4433:4433 -h "v2node" \
     ghcr.io/lcjuves/v2node)
 echo "v2node's container id: $V2NODE_CONTAINER_ID"
