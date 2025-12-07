@@ -1,6 +1,7 @@
 FROM container-base
 RUN apt-get install -y curl
-RUN curl -fsSL https://gitlab.com/LcJuves/podock/-/raw/main/container-image-builder/install-docker-for-debian.sh | sh
+
+RUN curl -fsSL https://github.com/LcJuves/podock/raw/refs/heads/dev/lcjuves/container-image-builder/install-docker-for-debian.sh | sh
 RUN apt-get install -y podman
 
 RUN apt-get install -y apt-transport-https
