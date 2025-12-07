@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
+apt remove "$(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)"
 
 # Add Docker's official GPG key:
 apt update -y
@@ -9,6 +9,7 @@ install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
 chmod a+r /etc/apt/keyrings/docker.asc
 
+# shellcheck source=/dev/null
 # Add the repository to Apt sources:
 tee /etc/apt/sources.list.d/docker.sources <<EOF
 Types: deb
