@@ -1,6 +1,6 @@
 [[containerImages]]
 name = "container-base"
-tags = [ "latest" ]
+tags = ["latest"]
 
 # [[containerImages]]
 # name = "osx-cross-compiler-builder"
@@ -8,12 +8,12 @@ tags = [ "latest" ]
 
 [[containerImages]]
 name = "amuse-lang-environment"
-tags = [ "rust-compiler", "llvmenv-jit", "llvmenv", "latest" ]
+tags = ["rust-compiler", "llvmenv-jit", "llvmenv", "latest"]
 
 [[containerImages]]
 name = "rustaceans"
-tags = [ "jit", "latest" ]
+tags = ["jit", "latest"]
 
 [[containerImages]]
 name = "develop-environment"
-tags = [ "rustaceans-jit", "rustaceans", "jit", "gitpod", "latest" ]
+tags = ["rustaceans-jit", "rustaceans", "jit", "gitpod", "latest"]

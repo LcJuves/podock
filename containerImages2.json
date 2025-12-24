@@ -13,7 +13,7 @@
   },
   {
     "name": "v2node",
-    "tags": ["self-hosted", "latest"]
+    "tags": ["ferron-self-hosted", "nginx-self-hosted", "latest"]
   },
   // {
   //   "name": "git-scm-builder",

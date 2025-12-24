@@ -1,18 +1,18 @@
 [[containerImages]]
 name = "container-base"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "codeoss-server"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "container-image-builder"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "v2node"
-tags = [ "self-hosted", "latest" ]
+tags = ["ferron-self-hosted", "nginx-self-hosted", "latest"]
 
 # [[containerImages]]
 # name = "git-scm-builder"
@@ -20,16 +20,16 @@ tags = [ "self-hosted", "latest" ]
 
 [[containerImages]]
 name = "linuxfromscratch-builder"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "host-manager"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "svg-worker"
-tags = [ "latest" ]
+tags = ["latest"]
 
 [[containerImages]]
 name = "fserv-worker"
-tags = [ "latest" ]
+tags = ["latest"]

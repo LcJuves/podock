@@ -1,0 +1,14 @@
+* {
+    // auto_tls
+    // auto_tls_contact "someone@example.com" // Replace "someone@example.com" with actual email address
+    // auto_tls_cache "/path/to/letsencrypt-cache" // Replace "/path/to/letsencrypt-cache" with actual cache directory. Optional property, but recommended
+    // auto_tls_letsencrypt_production
+    auto_tls_challenge "dns-01" provider="cloudflare" api_key="your_api_key" email="someone@example.com"
+}
+
+// TLS certificate is obtained automatically by Ferron
+localhost {
+    proxy "http://127.0.0.1:4433"
+    proxy_request_header_replace "Host" "{header:Host}"
+    lb_health_check
+}
