@@ -8,7 +8,7 @@ EXPOSE 443
 
 RUN apt-get install -y vim
 WORKDIR /root
-ADD ferron.kdl .
+ADD ferron.kdl /etc/
 
 
 ADD init-ferron-self-hosted-v2node.sh .
