@@ -61,7 +61,7 @@ Future<void> buildContainerImage(
 
   final dockerBuildStatusCode = await execContainerProviderCommand(wd, [
     "build",
-    "--platform=$buildType/amd64",
+    "--platform=$buildType/arm64",
     "-t",
     imageName,
     "-f",
