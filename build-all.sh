@@ -3,9 +3,9 @@
 # @author Liangcheng Juves
 
 _PUSH=false
-if [ -n "$CI_REGISTRY_GHCR_USER" ] && [ -n "$CR_PAT" ] && [ -n "$CI_REGISTRY_GHCR" ]; then
+if [ -n "$CI_REGISTRY_GHCR_USER" ] && [ -n "$CI_REGISTRY_GHCR_PASSWORD" ] && [ -n "$CI_REGISTRY_GHCR" ]; then
     # Working with the GitHub Container registry
-    docker login -u "$CI_REGISTRY_GHCR_USER" -p "$CR_PAT" "$CI_REGISTRY_GHCR"
+    docker login -u "$CI_REGISTRY_GHCR_USER" -p "$CI_REGISTRY_GHCR_PASSWORD" "$CI_REGISTRY_GHCR"
     _PUSH=true
 fi
 
@@ -20,9 +20,9 @@ dart run build.dart --push $_PUSH --registry "$CI_REGISTRY_GHCR" --containerInfo
 # dart run build.dart --push $_PUSH --registry $CI_REGISTRY_GHCR --containerInfoFile containerImages3.json
 # (docker images | awk 'NR!=1{print $3}' | xargs docker rmi -f) || echo >/dev/null
 
-if [ -n "$CI_REGISTRY_USER" ] && [ -n "$CI_REGISTRY_PASSWORD" ] && [ -n "$CI_REGISTRY_DOCKER" ]; then
+if [ -n "$CI_REGISTRY_DOCKER_USER" ] && [ -n "$CI_REGISTRY_DOCKER_PASSWORD" ] && [ -n "$CI_REGISTRY_DOCKER" ]; then
     # Working with the Docker Container registry
-    docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY_DOCKER"
+    docker login -u "$CI_REGISTRY_DOCKER_USER" -p "$CI_REGISTRY_DOCKER_PASSWORD" "$CI_REGISTRY_DOCKER"
     _PUSH=true
 fi
 
