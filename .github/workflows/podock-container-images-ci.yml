@@ -27,7 +27,7 @@ defaults:
 jobs:
   build-container-images:
     name: Build Container Images
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/lcjuves/container-image-builder:latest
     steps:
