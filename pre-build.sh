@@ -38,5 +38,5 @@
 
 (
     cd git-scm-builder || exit
-    cp ../amuse-lang-environment/llvm-toolchain-bookworm-19.sources.list .
+    cp ../amuse-lang-environment/llvm-toolchain-trixie-22.sources.list .
 )
