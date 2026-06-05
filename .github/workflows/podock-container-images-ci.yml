@@ -31,6 +31,6 @@ jobs:
     container:
       image: ghcr.io/lcjuves/container-image-builder:latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6.0.3
       - name: Building ...
         run: sh -e build-all.sh
