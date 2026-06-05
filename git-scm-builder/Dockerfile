@@ -1,7 +1,6 @@
 FROM container-base
-RUN apt-get install -y curl gnupg2 apt-transport-https
 ADD llvm-toolchain-bookworm-19.sources.list /etc/apt/sources.list.d/
-RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+RUN curl -s https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 RUN apt-get update -y
 
 RUN apt-get install -y xz-utils unzip
