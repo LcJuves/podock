@@ -5,10 +5,13 @@ RUN ln -s /usr/bin/clang++-22 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-22 /usr/bin/c++
 
 RUN rustup target add aarch64-unknown-uefi aarch64-unknown-fuchsia --toolchain=stable
-RUN rustup target add loongarch64-unknown-linux-musl aarch64-unknown-linux-ohos --toolchain=stable
-RUN rustup target add aarch64-unknown-linux-musl x86_64-unknown-linux-musl --toolchain=stable
-RUN rustup target add aarch64-apple-darwin x86_64-apple-darwin --toolchain=stable
-RUN rustup target add aarch64-pc-windows-gnullvm x86_64-pc-windows-gnu --toolchain=stable
+RUN rustup target add riscv64-oe-linux-gnu riscv64-linux-android --toolchain=stable
+RUN rustup target add aarch64-linux-android arm-linux-androideabi --toolchain=stable
+RUN rustup target add aarch64-unknown-linux-ohos loongarch64-unknown-linux-ohos --toolchain=stable
+RUN rustup target add aarch64-unknown-linux-musl riscv64gc-unknown-linux-musl --toolchain=stable
+RUN rustup target add arm64e-apple-ios arm64e-apple-darwin --toolchain=stable
+RUN rustup target add aarch64-apple-visionos aarch64-apple-watchos --toolchain=stable
+RUN rustup target add aarch64-pc-windows-gnullvm nvptx64-nvidia-cuda --toolchain=stable
 
 ADD osx-cross-compiler.tar.xz /root/
 ADD osx-aarch64-darwin-rustc /usr/bin/
