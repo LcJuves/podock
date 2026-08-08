@@ -5,9 +5,8 @@ RUN ln -s /usr/bin/clang++-22 /usr/bin/clang++
 RUN ln -s /usr/bin/clang-cpp-22 /usr/bin/c++
 
 RUN rustup target add aarch64-unknown-uefi aarch64-unknown-fuchsia --toolchain=stable
-RUN rustup target add loongarch64-unknown-linux-gnu aarch64-unknown-linux-ohos --toolchain=stable
-RUN rustup target add aarch64-unknown-linux-gnu aarch64-unknown-linux-musl --toolchain=stable
-RUN rustup target add x86_64-unknown-linux-gnu x86_64-unknown-linux-musl --toolchain=stable
+RUN rustup target add loongarch64-unknown-linux-musl aarch64-unknown-linux-ohos --toolchain=stable
+RUN rustup target add aarch64-unknown-linux-musl x86_64-unknown-linux-musl --toolchain=stable
 RUN rustup target add aarch64-apple-darwin x86_64-apple-darwin --toolchain=stable
 RUN rustup target add aarch64-pc-windows-gnullvm x86_64-pc-windows-gnu --toolchain=stable
 
